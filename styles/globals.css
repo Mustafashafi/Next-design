@@ -129,18 +129,18 @@ body {
 }
 /* SERVICES */
 .service-header{
-    width: 95%;
+    width:100%;
     border: 0px #47a1ef ;
     border-radius: 20px ;
     padding: 30px;
     padding-bottom: 180px;
-    margin-left: 40px;
+    margin-left: 10px;
     background-color: #47a1ef;
     color: rgba(255, 255, 255, 0.913);
 }
 .service-header h1{
   float: left;
-  width: 35%;
+  width: 25%;
   font-size: 40px;
 
 
