@@ -5,28 +5,28 @@ export default function Brands() {
     <section id="home" className="brands">
       <div className="brands-container">
         <Image
-          src="/images/1.png"
+          src="/images/5.png"
           alt="Brand Logo 1"
           width={200}
           height={120}
           className="brand-image"
         />
         <Image
-          src="/images/2.png"
+          src="/images/6.png"
           alt="Brand Logo 2"
           width={200}
           height={120}
           className="brand-image"
         />
         <Image
-          src="/images/3.png"
+          src="/images/7.png"
           alt="Brand Logo 3"
           width={200}
           height={120}
           className="brand-image"
         />
         <Image
-          src="/images/4.png"
+          src="/images/8.png"
           alt="Brand Logo 4"
           width={200}
           height={120}
