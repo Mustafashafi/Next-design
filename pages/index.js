@@ -27,7 +27,7 @@ By combining Artificial Intelligence, biosensing technologies, and real-time con
   marginTop:"150px"
  }}
  />
-      <Brands></Brands>
+      <Brands />
       <Services />
       <Product />
       <Expertise />
