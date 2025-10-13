@@ -45,7 +45,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="section testimonials-section">
+    <section className="section testimonials-section" id="testimonials">
       <div className="wrap">
         <h1>What People Say About Us</h1>
         <Swiper

@@ -369,7 +369,7 @@ header.scrolled {
 
 /* === Section Title === */
 .expertise-section h2 {
-  font-size: 2.8rem;
+  font-size: 2.8rem !important;
   font-weight: 800;
   color: #186cb5;
   margin-bottom: 65px;
@@ -571,7 +571,7 @@ color: #186cb5;
 .partner-left {
   flex: 1;
   width: 50%;
-background-color: #378ff3;
+background-color: #186cb5;
 padding: 60px 30px;
 border-radius: 20px;
 margin-left: 80px;
@@ -579,9 +579,9 @@ margin-left: 80px;
 
 /* ACCORDION ITEM */
 .accordion-item {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
   transition: all 0.3s ease;
-  background-color: #378ff3;
+  background-color: #186cb5;
 }
 
 .accordion-item:hover {
@@ -601,7 +601,7 @@ margin-left: 80px;
 
 /* ACCORDION CONTENT */
 .accordion-content {
-  background-color: #378ff3;
+  background-color: #186cb5;
   padding: 15px 20px;
   font-size: 16px;
   line-height: 1.6;
@@ -1507,7 +1507,9 @@ textarea {
   background: #f9f9f9;
   color: #186cb5;
 }
-
+.testimonials-section h1{
+  font-size: 2.5rem;
+}
 .testimonials-swiper {
   margin-top: 40px;
 }
