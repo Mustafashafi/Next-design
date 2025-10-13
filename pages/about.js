@@ -10,8 +10,18 @@ export default function About() {
       <Header />
 
       {/* === Hero Section === */}
-      <Hero 
-        heading="Our Mission"
+      <Hero  headingStyle={{
+        marginTop:"100px",
+          fontSize: "45px",      // ≈ text-4xl
+    color: "#2e87d4ff"
+        }}
+        textStyle={{
+          fontSize: "1.5rem",      // ≈ text-4xl
+    color: "#2e87d4ff"
+        }}
+
+        
+        heading="Our Vision"
         text="Transforming the status quo reactive, expensive, sporadically accessible, and episodic 'Sick care' into a predictive, preventive, personalized, continuously accessible, and affordable 'healthcare' for fuller and longer lives for all. It means changing today’s healthcare, which usually helps people after they get sick, into a system that predicts, prevents, and monitors health problems early — making healthcare more personalized, affordable, and always available so everyone can live healthier and longer lives."
       />
 
