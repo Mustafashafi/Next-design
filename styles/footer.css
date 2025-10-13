@@ -1,0 +1,90 @@
+.site-footer {
+  background: #111;
+  color: #fff;
+  padding: 3rem 1rem 1.5rem;
+  margin-top: 4rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #00b4d8;
+}
+
+.footer-logo img {
+  margin-bottom: 1rem;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #00b4d8;
+}
+
+.footer-contact p {
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-contact a {
+  color: #00b4d8;
+  text-decoration: none;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.footer-socials a {
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #00b4d8;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  color: #aaa;
+}
+
+.footer-bottom span {
+  color: #00b4d8;
+  font-weight: 600;
+}
