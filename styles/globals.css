@@ -8,7 +8,21 @@ body {
   font-family:'Noto Naskh Arabic', serif;
   line-height: 1.6;
 }
-/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: white;
+  transition: backdrop-filter 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add blur + shadow when scrolled */
+header.scrolled {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 .top-bar {
   background: #47a1ef;
   color: #fff;
@@ -17,10 +31,10 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.top-bar a{
+
+.top-bar a {
   color: white;
   margin-right: 20px;
-  
 }
 
 .navbar {
@@ -28,8 +42,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: #fff;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 }
 
 .navbar .logo {
@@ -49,14 +61,16 @@ body {
   color: black;
   font-weight: 500;
 }
+
 .contact-link {
-  color: #1271c5 !important; /* Blue font */
+  color: #1271c5 !important;
   font-weight: 600;
-  box-shadow: 0 0 10px rgba(24,108,181,0.4); /* Blue glow */
+  box-shadow: 0 0 10px rgba(24,108,181,0.4);
   padding: 8px 15px;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
+
 
 /* HERO SECTION */
 .hero {
@@ -75,7 +89,7 @@ body {
 }
 
 .hero-text h1 {
-  font-size: 46px;
+  font-size: 43px;
   color: #2e87d4ff;
 }
 
