@@ -20,9 +20,13 @@ export default function Home() {
       <Hero heading="Start living to your fullest with LYF Suite." text=" LYF Suite is redefining how we care for our health — moving from reactive sick care to predictive health care.
 By combining Artificial Intelligence, biosensing technologies, and real-time connectivity, LYF Suite empowers you to monitor, understand, and improve your well-being before problems arise.
  Experience a smarter, proactive approach to health that helps you live longer, stronger, and happier." textStyle={{
-  fontSize:"1.3rem",
-  margin:"10px"
- }}/>
+  fontSize:"1.5rem",
+  margin:"10px",
+ }}
+ headingStyle={{
+  marginTop:"150px"
+ }}
+ />
       <Brands></Brands>
       <Services />
       <Product />
