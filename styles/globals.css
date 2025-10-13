@@ -8,7 +8,32 @@ body {
   font-family:'Noto Naskh Arabic', serif;
   line-height: 1.6;
 }
-/* HEADER */
+/* HEADER BASE STYLE */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white; /* Default solid background */
+  transition: all 0.4s ease;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* when user scrolls */
+.header.scrolled {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(10px); /* slight slide down */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* make space below header so hero isn’t hidden */
+body {
+  margin: 0;
+  padding-top: 130px; /* adjust depending on header height */
+}
+
+/* TOP BAR */
 .top-bar {
   background: #47a1ef;
   color: #fff;
@@ -16,26 +41,21 @@ body {
   font-size: 14px;
   display: flex;
   justify-content: space-between;
-}
-.top-bar a{
-  color: white;
-  margin-right: 20px;
-  
+  align-items: center;
 }
 
+.top-bar a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background: #fff;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-}
-
-.navbar .logo {
-  font-weight: 700;
-  font-size: 22px;
-  color: #0b2540;
+  padding: 15px 40px;
 }
 
 .nav-links {
@@ -49,14 +69,17 @@ body {
   color: black;
   font-weight: 500;
 }
+
 .contact-link {
-  color: #1271c5 !important; /* Blue font */
+  color: #1271c5 !important;
   font-weight: 600;
-  box-shadow: 0 0 10px rgba(24,108,181,0.4); /* Blue glow */
+  box-shadow: 0 0 10px rgba(24,108,181,0.4);
   padding: 8px 15px;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
+
+
 
 
 /* HERO SECTION */
