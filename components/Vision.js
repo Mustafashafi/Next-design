@@ -14,20 +14,11 @@ export default function Vision() {
       </div>
 
       <div className="vision-text">
-        <h2>Our Vision And Mission</h2>
-        <p>
-          We denounce with righteous indignation and dislike men who are so beguiled
-          by pleasure of the moment, blinded by desire, that they cannot foresee
-          the pain and trouble. Pleasure of the moment, blinded by desire, that they cannot foresee
-          the pain and trouble. Pleasure of the moment, blinded by desire, that they cannot foresee
-          the pain and trouble.
+        <h2 style={{color:"#186cb5"}}>Our  Mission</h2>
+        <p style={{fontSize:"22px",width:"125%",color:"#186cb5"}}>
+          At AI4LYF, our mission is to make this vision possible through AI, Biosensing and Wireless Communications innovations. Our integrated wearable and ambient biosensing solutions enable harnessing the multi-sensory, multi-modal data on human health with unprecedented temporal resolution and precision. By distilling this rich data, our powerful propriety AI platform delivers in-situ, faster and predictive diagnostics and remote health monitoring solutions with reliability unmatched in the industry.
         </p>
 
-        <p>✅ No Dislike Men</p>
-        <p>💚 Pleasure of the Area</p>
-        <br />
-
-        <button className="learn-btn">Learn More</button>
       </div>
     </section>
   );

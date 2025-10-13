@@ -92,12 +92,12 @@ header.scrolled {
 
 .hero-text h1 {
   font-size: 43px;
-  color: #2e87d4ff;
+  color: #186cb5;
 }
 
 .hero-text p {
   margin: 15px 0 25px;
-  color: #2e87d4ff;
+  color: #186cb5;
 }
 
 .booking-box {
@@ -371,7 +371,7 @@ header.scrolled {
 .expertise-section h2 {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #0c6d9c;
+  color: #186cb5;
   margin-bottom: 65px;
   letter-spacing: 0.6px;
   position: relative;
@@ -449,7 +449,7 @@ header.scrolled {
 }
 
 .expert-card:hover .expert-text h4 {
-  color: #0ea5e9;
+  color: #186cb5;
 }
 
 /* === Description === */
@@ -467,7 +467,7 @@ header.scrolled {
 /* === Button === */
 .btn-outline.small {
   background: transparent;
-  color: #0ea5e9 !important;
+  color: #186cb5 !important;
   border: 1.8px solid #0ea5e9 !important;
   border-radius: 50px;
   padding: 8px 22px;
@@ -542,7 +542,7 @@ header.scrolled {
 text-align: center;
 font-size: 50px;
 line-height: 150px;
-color: #378ff3;
+color: #186cb5;
 }
 .partner-section0 h1::after{
   content: "";
@@ -1505,7 +1505,7 @@ textarea {
   text-align: center;
   padding: 80px 0;
   background: #f9f9f9;
-  color: #1486ac;
+  color: #186cb5;
 }
 
 .testimonials-swiper {
