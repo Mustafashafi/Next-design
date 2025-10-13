@@ -760,6 +760,9 @@ color: #186cb5;
   order: 2; /* text comes first */
   font-size: 18px;
 }
+.partner-text1 h1{
+  margin-top: -20px;
+}
 .partner-text1 p {
  font-size: 22px;
 }
