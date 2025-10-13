@@ -75,7 +75,7 @@ body {
 }
 
 .hero-text h1 {
-  font-size: 52px;
+  font-size: 46px;
   color: #2e87d4ff;
 }
 
@@ -295,7 +295,7 @@ body {
   color: #186cb5;
   line-height: 1.75;
   margin-bottom: 12px;
-  font-size: 25px;
+  font-size: 22px;
 }
 .link-more {
   color: var(--primary);
@@ -537,6 +537,12 @@ color: #378ff3;
   margin: -20px auto 0;
   border-radius: 2px;
 }
+.partner-section h1{
+  font-size: 35px;
+}
+.partner-section .partner-text p{
+  font-size: 23px;
+}
 
 .partner-container {
   display: flex;
@@ -735,10 +741,10 @@ color: #186cb5;
   flex: 1;
   min-width: 260px;
   order: 2; /* text comes first */
-  font-size: 20px;
+  font-size: 18px;
 }
 .partner-text1 p {
- font-size: 25px;
+ font-size: 22px;
 }
 .partner-image1 {
   flex: 1;

@@ -12,11 +12,11 @@ export default function About() {
       {/* === Hero Section === */}
       <Hero  headingStyle={{
         marginTop:"100px",
-          fontSize: "45px",      // ≈ text-4xl
+          fontSize: "40px",      // ≈ text-4xl
     color: "#2e87d4ff"
         }}
         textStyle={{
-          fontSize: "1.5rem",      // ≈ text-4xl
+          fontSize: "1.4rem",      // ≈ text-4xl
     color: "#2e87d4ff"
         }}
 
@@ -45,11 +45,11 @@ export default function About() {
             {/* Product Info */}
             <div className="product-info max-w-xl">
               <h1 className="text-2xl font-semibold mb-4" style={{
-    fontSize: "40px",      // ≈ text-4xl
+    fontSize: "38px",      // ≈ text-4xl
     color: "#2e87d4ff"         // blue
   }}>Our Mission</h1>
               <p className="text-gray-600 leading-relaxed" style={{
-    fontSize: "1.5rem",      // ≈ text-4xl
+    fontSize: "1.4rem",      // ≈ text-4xl
     
     color: "#2e87d4ff"         // blue
   }}>
