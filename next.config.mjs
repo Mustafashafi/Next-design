@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["ai4lyf.com", "images.unsplash.com"], // ✅ Added Unsplash domain
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ai4lyf.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+    ],
   },
 };
 
