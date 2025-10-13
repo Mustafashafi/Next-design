@@ -129,12 +129,12 @@ body {
 }
 /* SERVICES */
 .service-header{
-    width: 90%;
+    width: 95%;
     border: 0px #47a1ef ;
     border-radius: 20px ;
     padding: 30px;
     padding-bottom: 180px;
-    margin-left: 65px;
+    margin-left: 40px;
     background-color: #47a1ef;
     color: rgba(255, 255, 255, 0.913);
 }
