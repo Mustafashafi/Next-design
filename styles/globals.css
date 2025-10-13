@@ -37,6 +37,7 @@ header.scrolled {
 .top-bar a {
   color: white;
   margin-right: 20px;
+  text-decoration: none;
 }
 
 .navbar {

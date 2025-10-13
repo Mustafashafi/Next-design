@@ -18,7 +18,7 @@ export default function Header() {
       setScrolled(window.scrollY > 0);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      let foundSection = 'home'; // default
+      let foundSection = 'home';
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);
         if (section && scrollPosition >= section.offsetTop) {
@@ -36,13 +36,10 @@ export default function Header() {
 
   const linkColor = '#186cb5';
 
-  // Function to handle clicking a section link
   const handleSectionClick = (sectionId) => {
     if (pathname !== '/') {
-      // Navigate to Home page first
       router.push('/' + (sectionId ? `#${sectionId}` : ''));
     } else {
-      // Scroll to section if already on Home
       const section = document.getElementById(sectionId);
       if (section) section.scrollIntoView({ behavior: 'smooth' });
     }
@@ -53,8 +50,8 @@ export default function Header() {
       <div className="top-bar">
         <span><Clock size={16} /> Sun–Mon: 10:00am to 9:00pm</span>
         <div>
-          <a ><Mail size={16} /> info@example.com</a>
-          <a ><Phone size={16} /> +8801765896254</a>
+          <a href="mailto:info@example.com"><Mail size={16} /> info@example.com</a>
+          <a href="tel:+8801765896254"><Phone size={16} /> +8801765896254</a>
         </div>
       </div>
 
@@ -89,50 +86,55 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/#services"
+              scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('services'); }}
               style={{ color: activeSection === 'services' ? linkColor : 'inherit' }}
             >
               Services
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/#expertise"
+              scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('expertise'); }}
               style={{ color: activeSection === 'expertise' ? linkColor : 'inherit' }}
             >
               Expertise
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/#partner"
+              scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('partner'); }}
               style={{ color: activeSection === 'partner' ? linkColor : 'inherit' }}
             >
               Partner
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/#testimonials"
+              scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('testimonials'); }}
               style={{ color: activeSection === 'testimonials' ? linkColor : 'inherit' }}
             >
               Testimonials
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/#contact"
-              className="contact-link"
+              scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('contact'); }}
+              className="contact-link"
               style={{ color: activeSection === 'contact' ? linkColor : 'inherit' }}
             >
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
