@@ -47,8 +47,8 @@ export default function Testimonials() {
   return (
     <section className="section testimonials-section" id="testimonials">
       <div className="wrap">
-        <h1>What People Say About Us</h1>
-        <Swiper
+        <h1>What People Say About Us</h1><br />
+        <Swiper style={{margin:"0px 50px"}}
           modules={[Navigation, Pagination]}
           spaceBetween={30}
           slidesPerView={3}
@@ -61,7 +61,7 @@ export default function Testimonials() {
             640: { slidesPerView: 2 },
             992: { slidesPerView: 3 },
           }}
-        >
+        ><br />
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
               <div className="testimonial-card">
