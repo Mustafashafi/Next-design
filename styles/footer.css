@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  
 }
 
 .footer-links a {
@@ -43,6 +44,7 @@
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s;
+  
 }
 
 .footer-links a:hover {
@@ -53,6 +55,11 @@
   font-size: 0.9rem;
   color: #ccc;
   line-height: 1.6;
+  
+}
+.footer-section p a{
+  text-decoration: none;
+  color: white;
 }
 
 .footer-contact a {
