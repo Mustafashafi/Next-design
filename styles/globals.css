@@ -1086,7 +1086,7 @@ textarea {
 
 /* SUBMIT BUTTON */
 .btn-submit {
-  background: linear-gradient(90deg, #0078ff 0%, #00bfff 100%);
+  background: linear-gradient(90deg, #0078ff 0%, #2182d1 100%);
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
