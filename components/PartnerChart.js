@@ -15,7 +15,7 @@ export default function PartnerChart() {
           </div>
           <div className="partner-image">
             <Image
-              src="https://ai4lyf.com/wp-content/uploads/whochart.webp"
+              src="/images/medical.png"
               alt="WHO chart"
               width={600}
               height={400}

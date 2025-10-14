@@ -1,9 +1,6 @@
+'use client';
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import styles from "./Team.module.css";
 
 export default function Team() {
   const testimonials = [
@@ -35,43 +32,26 @@ export default function Team() {
   ];
 
   return (
-    <section className="section testimonials-section" id="testimonials">
-      <div className="wrap">
-        <h1>Meet Our Team</h1>
-        <Swiper
-          style={{ margin: "0px 40px" }}
-          modules={[Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={3}
-          pagination={{ clickable: true }}
-          navigation
-          loop={true}
-          className="testimonials-swiper"
-          breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            992: { slidesPerView: 3 },
-          }}
-        >
+    <section className={styles.teamSection} id="team">
+      <div className={styles.teamWrap}>
+        <h1 className={styles.teamTitle}>Meet Our Team</h1>
+        <div className={styles.teamCards}>
           {testimonials.map((t, i) => (
-            <SwiperSlide key={i}>
-              <div className="testimonial-card" style={{padding:"50px 0px"}}>
-                <div className="testimonial-img-wrapper">
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    width={120}
-                    height={120}
-                    className="testimonial-img"
-                  />
-                </div>
-                <h4>{t.name}</h4>
-                <span>{t.role}</span>
+            <div key={i} className={styles.teamCard}>
+              <div className={styles.teamImgWrapper}>
+                <Image
+                  src={t.img}
+                  alt={t.name}
+                  width={120}
+                  height={120}
+                  className={styles.teamImg}
+                />
               </div>
-              <br />
-            </SwiperSlide>
+              <h4 className={styles.teamName}>{t.name}</h4>
+              <span className={styles.teamRole}>{t.role}</span>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </div>
     </section>
   );

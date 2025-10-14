@@ -1,4 +1,5 @@
 'use client';
+import { useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -7,22 +8,38 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function QuickGuide({ title, pdf }) {
-  const guides = [1, 2, 3, 4, 5]; // can replace with dynamic data
+  const guides = [1, 2, 3, 4, 5];
+
+  // Create refs for navigation buttons
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   return (
     <section className="quick-guides">
       <h1>{title}</h1>
-      <button
-        onClick={() => window.open(pdf, "_blank")}
-      >
+      <button onClick={() => window.open(pdf, "_blank")}>
         Download PDF Brochure
       </button>
+
+      {/* Custom navigation buttons */}
+      <div className="swiper-buttons">
+        <div ref={prevRef} className="custom-prev">&#10094;</div>
+        <div ref={nextRef} className="custom-next">&#10095;</div>
+      </div>
 
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={25}
         slidesPerView={4}
-        navigation
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          // Bind the refs properly before initialization
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
         pagination={{ clickable: true }}
         loop={true}
         breakpoints={{
@@ -44,7 +61,6 @@ export default function QuickGuide({ title, pdf }) {
                   height={300}
                   className="rounded shadow-md object-cover"
                 />
-                <br /><br />
               </div>
             </SwiperSlide>
           );

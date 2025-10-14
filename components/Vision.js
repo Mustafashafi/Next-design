@@ -5,7 +5,7 @@ export default function Vision() {
     <section id="about" className="vision">
       <div className="vision-image">
         <Image
-          src="/images/girl.png"   // Make sure the file name matches exactly (case-sensitive)
+          src="/images/girl1.png"   // Make sure the file name matches exactly (case-sensitive)
           alt="Doctor"
           width={400}                 // adjust as needed
           height={400}                // adjust as needed
