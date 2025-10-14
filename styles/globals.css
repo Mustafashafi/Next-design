@@ -204,7 +204,7 @@ header.scrolled {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   text-align: left;
   max-width: 250px;
   margin-left: 20px;
@@ -1010,7 +1010,7 @@ color: #186cb5;
   background: #ffffff;
   padding: 50px 60px;
   border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(0, 60, 130, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 60, 130, 0.2);
   max-width: 900px;
   width: 100%;
   transition: all 0.3s ease;
@@ -1018,7 +1018,7 @@ color: #186cb5;
 
 .contact-container:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 45px rgba(0, 100, 200, 0.12);
+  box-shadow: 0 16px 45px rgba(0, 100, 200, 0.25);
 }
 
 .contact-header {
@@ -1086,7 +1086,7 @@ textarea {
 
 /* SUBMIT BUTTON */
 .btn-submit {
-  background: linear-gradient(90deg, #0078ff 0%, #2182d1 100%);
+  background: linear-gradient(90deg, #186cb5 0%, #2388e0 100%);
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -1164,7 +1164,7 @@ textarea {
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1173,7 +1173,7 @@ textarea {
 
 .expert-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 .expert-video {
@@ -1494,7 +1494,7 @@ textarea {
 }
 .card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 .button {
