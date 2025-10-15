@@ -3,7 +3,7 @@ export default function Contact() {
     <section id="contact" className="contact-section">
       <div className="contact-wrapper">
         {/* LEFT SIDE - TEXT CONTENT */}
-        <div className="contact-text">
+        <div className="contact-text" style={{marginTop:"-400px"}}>
           <h2 className="contact-title">Let’s Work Together</h2>
           <p className="contact-subtitle">
             Have a project in mind? Let’s discuss how <span>AI can transform</span> your business.
