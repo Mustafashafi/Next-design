@@ -143,6 +143,8 @@ header.scrolled {
   padding-bottom: 20px;
   margin-left: 110px;
 }
+
+
 /* SERVICES */
 .service-header{
     width:100%;
@@ -175,11 +177,18 @@ header.scrolled {
   margin-right: -200;
   background-color: white;
   padding: 12px 30px;
-  border: none;
+  border: 1px solid white;
   border-radius: 6px;
   cursor: pointer;
 }
 
+.book-btn:hover{
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 1px solid rgba(255, 255, 255, 0.945)r ;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  margin-top: 18px;
+  
+}
 
 .services {
   text-align: center;
