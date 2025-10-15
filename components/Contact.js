@@ -1,41 +1,51 @@
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <div className="contact-container">
-        <div className="contact-header">
-          <h2 className="contact-title">Request a Demo</h2>
+      <div className="contact-wrapper">
+        {/* LEFT SIDE - TEXT CONTENT */}
+        <div className="contact-text">
+          <h2 className="contact-title">Let’s Work Together</h2>
           <p className="contact-subtitle">
-            Transform your business with <span>AI-powered insights</span>.  
-            Fill out the form below and our team will reach out shortly.
+            Have a project in mind? Let’s discuss how <span>AI can transform</span> your business.
+            Fill out the form and our team will reach out shortly.
           </p>
+
+          <div className="contact-details">
+            <p><strong>Email:</strong> contact@ai4lyf.com</p>
+            <p><strong>Phone:</strong> +1 (800) 123-4567</p>
+            <p><strong>Office:</strong> Lahore , Pakistan</p>
+          </div>
         </div>
 
-        <form className="contact-form" action="https://ai4lyf.com/#contact" method="post">
-          <div className="form-row">
-            <input name="first" type="text" placeholder="First Name" required />
-            <input name="last" type="text" placeholder="Last Name" required />
-          </div>
+        {/* RIGHT SIDE - FORM CARD */}
+        <div className="contact-form-card">
+          <form className="contact-form" action="https://ai4lyf.com/#contact" method="post">
+            <div className="form-row">
+              <input name="first" type="text" placeholder="First Name" required />
+              <input name="last" type="text" placeholder="Last Name" required />
+            </div>
 
-          <div className="form-row">
-            <input name="email" type="email" placeholder="Work Email" required />
-            <input name="company" type="text" placeholder="Company / Organization" required />
-          </div>
+            <div className="form-row">
+              <input name="email" type="email" placeholder="Work Email" required />
+              <input name="company" type="text" placeholder="Company / Organization" required />
+            </div>
 
-          <div className="form-row">
-            <input name="product" type="text" placeholder="Product / Service of Interest" />
-            <input name="country" type="text" placeholder="Country / Region" />
-          </div>
+            <div className="form-row">
+              <input name="product" type="text" placeholder="Product / Service of Interest" />
+              <input name="country" type="text" placeholder="Country / Region" />
+            </div>
 
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Tell us about your project or AI goals..."
-          ></textarea>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Tell us about your project or AI goals..."
+            ></textarea>
 
-          <button className="btn-submit" type="submit">
-            Submit Information
-          </button>
-        </form>
+            <button className="btn-submit" type="submit">
+              Submit Information
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
