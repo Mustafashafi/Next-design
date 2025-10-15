@@ -3,21 +3,20 @@ import { useState, useEffect } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Clock, Mail, Phone } from 'lucide-react';
+import { Clock, Mail, Phone, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home'); // default active section
+  const [activeSection, setActiveSection] = useState('home');
+  const [showProducts, setShowProducts] = useState(false);
 
   useEffect(() => {
-    const sectionIds = ['services', 'expertise', 'partner', 'testimonials', 'contact'];
-
+    const sectionIds = ['services', 'expertise', 'partner', 'products', 'contact']; // ✅ "products"
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-
       let foundSection = 'home';
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);
@@ -26,10 +25,8 @@ export default function Header() {
           break;
         }
       }
-
       setActiveSection(foundSection);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -43,6 +40,13 @@ export default function Header() {
       const section = document.getElementById(sectionId);
       if (section) section.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  // ✅ Scroll to the products section when any product is clicked
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    setShowProducts(false);
+    handleSectionClick('products'); // ✅ matches your section ID
   };
 
   return (
@@ -85,6 +89,27 @@ export default function Header() {
               About
             </Link>
           </li>
+
+          {/* ✅ Products Dropdown */}
+          <li
+            className="dropdown"
+            onMouseEnter={() => setShowProducts(true)}
+            onMouseLeave={() => setShowProducts(false)}
+          >
+            <button className="dropdown-btn">
+              Products 
+              <ChevronDown size={16} className="dropdown-icon" />
+            </button>
+            {showProducts && (
+              <ul className="dropdown-menu">
+                <li><a href="#products" onClick={handleProductClick}>LYF SUITE</a></li>
+                <li><a href="#products" onClick={handleProductClick}>DTP</a></li>
+                <li><a href="#products" onClick={handleProductClick}>D-WIN</a></li>
+                <li><a href="#products" onClick={handleProductClick}>LYF DATA</a></li>
+              </ul>
+            )}
+          </li>
+
           <li>
             <Link
               href="/#services"
@@ -117,16 +142,6 @@ export default function Header() {
           </li>
           <li>
             <Link
-              href="/#testimonials"
-              scroll={false}
-              onClick={(e) => { e.preventDefault(); handleSectionClick('testimonials'); }}
-              style={{ color: activeSection === 'testimonials' ? linkColor : 'inherit' }}
-            >
-              Testimonials
-            </Link>
-          </li>
-          <li>
-            <Link
               href="/#contact"
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('contact'); }}
@@ -138,6 +153,58 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+
+      {/* ✅ Dropdown styling */}
+      <style jsx>{`
+        .dropdown {
+          position: relative;
+        }
+        .dropdown-btn {
+          background: none;
+          border: none;
+          color: inherit;
+          font: inherit;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: color 0.2s ease;
+        }
+        .dropdown-btn:hover {
+          color: ${linkColor};
+        }
+        .dropdown-icon {
+          margin-top: 2px;
+          transition: transform 0.2s ease;
+        }
+        .dropdown:hover .dropdown-icon {
+          transform: rotate(180deg);
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: white;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          padding: 8px 0;
+          list-style: none;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          min-width: 200px;
+          z-index: 10;
+        }
+        .dropdown-menu li {
+          padding: 8px 16px;
+        }
+        .dropdown-menu li:hover {
+          background: #f0f8ff;
+        }
+        .dropdown-menu a {
+          color: #333;
+          text-decoration: none;
+          display: block;
+        }
+      `}</style>
     </header>
   );
 }
