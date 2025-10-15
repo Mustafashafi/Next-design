@@ -13,7 +13,7 @@ export default function Header() {
   const [showProducts, setShowProducts] = useState(false);
 
   useEffect(() => {
-    const sectionIds = ['services', 'expertise', 'partner', 'products', 'contact']; // ✅ "products"
+    const sectionIds = ['services', 'expertise', 'products', 'contact']; // ✅ "products"
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -130,16 +130,7 @@ export default function Header() {
               Expertise
             </Link>
           </li>
-          <li>
-            <Link
-              href="/#partner"
-              scroll={false}
-              onClick={(e) => { e.preventDefault(); handleSectionClick('partner'); }}
-              style={{ color: activeSection === 'partner' ? linkColor : 'inherit' }}
-            >
-              Partner
-            </Link>
-          </li>
+         
           <li>
             <Link
               href="/#contact"
