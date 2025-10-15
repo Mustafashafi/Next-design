@@ -1062,7 +1062,7 @@ color: #186cb5;
   flex: 1;
   background: #ffffff;
   padding: 50px 60px;
-  border-radius: 20px;
+  
   box-shadow: 0 12px 40px rgba(0, 60, 130, 0.2);
   max-width: 550px;
   transition: all 0.3s ease;
