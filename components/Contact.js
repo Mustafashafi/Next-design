@@ -1,9 +1,11 @@
+import { Mail, Phone, MapPin } from "lucide-react";
+
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="contact-wrapper">
         {/* LEFT SIDE - TEXT CONTENT */}
-        <div className="contact-text" style={{marginTop:"-400px"}}>
+        <div className="contact-text" style={{ marginTop: "-400px" }}>
           <h2 className="contact-title">Let’s Work Together</h2>
           <p className="contact-subtitle">
             Have a project in mind? Let’s discuss how <span>AI can transform</span> your business.
@@ -11,9 +13,18 @@ export default function Contact() {
           </p>
 
           <div className="contact-details">
-            <p><strong>Email:</strong> contact@ai4lyf.com</p>
-            <p><strong>Phone:</strong> +1 (800) 123-4567</p>
-            <p><strong>Office:</strong> Lahore , Pakistan</p>
+            <p>
+              <Mail className="contact-icon" />
+              <strong>Email:</strong> contact@ai4lyf.com
+            </p>
+            <p>
+              <Phone className="contact-icon" />
+              <strong>Phone:</strong> +1 (800) 123-4567
+            </p>
+            <p>
+              <MapPin className="contact-icon" />
+              <strong>Office:</strong> Lahore, Pakistan
+            </p>
           </div>
         </div>
 
