@@ -34,21 +34,41 @@ export default function Product() {
   const [activeTab, setActiveTab] = useState("LYF Suite");
   const current = products[activeTab];
 
-  // ✅ Listen for dropdown product clicks from Header
+  // ✅ Listen for dropdown product clicks from Header (in same page)
   useEffect(() => {
     const handleProductChange = (event) => {
       const productKey = event.detail;
       if (products[productKey]) {
         setActiveTab(productKey);
-        // Smoothly scroll into view
-        document
-          .getElementById("products")
-          ?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
       }
     };
 
     window.addEventListener("selectProduct", handleProductChange);
     return () => window.removeEventListener("selectProduct", handleProductChange);
+  }, []);
+
+  // ✅ Handle navigation from other pages (e.g., /about)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const selectedProduct = params.get("selectedProduct");
+
+      if (selectedProduct && products[selectedProduct]) {
+        setActiveTab(selectedProduct);
+
+        // Scroll smoothly into view
+        document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+
+        // Dispatch same custom event (so behavior stays consistent)
+        window.dispatchEvent(new CustomEvent("selectProduct", { detail: selectedProduct }));
+
+        // ✅ Clean up the URL (remove ?selectedProduct=... so it looks clean)
+        const url = new URL(window.location.href);
+        url.searchParams.delete("selectedProduct");
+        window.history.replaceState({}, "", url.toString());
+      }
+    }
   }, []);
 
   return (
@@ -71,7 +91,7 @@ export default function Product() {
           </div>
           <br />
 
-          {/* Product Display (Image Left, Text Right) */}
+          {/* Product Display */}
           <div className="product-display flex items-center gap-10 mt-6 flex-wrap md:flex-nowrap">
             {/* Image */}
             <div className="product-img w-full md:w-1/2">
@@ -128,7 +148,7 @@ export default function Product() {
         .tab {
           background: #f0f0f0;
           border: none;
-          padding: 10px 18px;
+          padding: 15px 20px;
           border-radius: 8px;
           cursor: pointer;
           transition: all 0.2s ease;
@@ -146,7 +166,6 @@ export default function Product() {
           color: #555;
           line-height: 1.6;
         }
-        
       `}</style>
     </>
   );

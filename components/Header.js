@@ -42,15 +42,20 @@ export default function Header() {
     }
   };
 
-  // ✅ Scroll to the products section and trigger product change
+  // ✅ Fixed: Handle product click from any page
   const handleProductClick = (e, productName) => {
     e.preventDefault();
     setShowProducts(false);
 
-    // Dispatch a custom event that Product.js listens for
-    window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
+    if (pathname !== '/') {
+      // If not on home, go to home with query + hash
+      const encoded = encodeURIComponent(productName);
+      router.push(`/?selectedProduct=${encoded}#products`);
+      return;
+    }
 
-    // Smooth scroll to product section
+    // If already on home, just dispatch event + scroll
+    window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
     document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
