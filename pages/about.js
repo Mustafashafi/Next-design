@@ -34,7 +34,7 @@ export default function About() {
       />
 <Vision />
 <Team />
-      
+      <br /><br /><br />
 
       <Footer />
     </>
