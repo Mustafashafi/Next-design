@@ -14,15 +14,15 @@ export default function Contact() {
 
           <div className="contact-details">
             <p>
-              <Mail className="contact-icon" />
+              <Mail className="contact-icon" style={{marginRight:"10px"}} />
               <strong>Email:</strong> contact@ai4lyf.com
             </p>
             <p>
-              <Phone className="contact-icon" />
+              <Phone className="contact-icon" style={{marginRight:"10px"}}/>
               <strong>Phone:</strong> +1 (800) 123-4567
             </p>
             <p>
-              <MapPin className="contact-icon" />
+              <MapPin className="contact-icon" style={{marginRight:"10px"}}/>
               <strong>Office:</strong> Lahore, Pakistan
             </p>
           </div>
