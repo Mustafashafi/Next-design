@@ -263,7 +263,7 @@ header.scrolled {
   font-size: larger;
 }
 .tab:hover {
-  background-color:blue; 
+  background-color:rgb(44, 114, 194); 
   color: white;
 
 }
