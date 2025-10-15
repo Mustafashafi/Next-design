@@ -19,7 +19,7 @@ export default function Contact() {
 
         {/* RIGHT SIDE - FORM CARD */}
         <div className="contact-form-card">
-          <form className="contact-form" action="https://ai4lyf.com/#contact" method="post">
+          <form className="contact-form" action="#" method="post">
             <div className="form-row">
               <input name="first" type="text" placeholder="First Name" required />
               <input name="last" type="text" placeholder="Last Name" required />
