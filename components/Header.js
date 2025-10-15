@@ -13,7 +13,7 @@ export default function Header() {
   const [showProducts, setShowProducts] = useState(false);
 
   useEffect(() => {
-    const sectionIds = ['services', 'expertise', 'products', 'contact']; // ✅ "products"
+    const sectionIds = ['services', 'expertise', 'products', 'contact'];
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -42,15 +42,21 @@ export default function Header() {
     }
   };
 
-  // ✅ Scroll to the products section when any product is clicked
-  const handleProductClick = (e) => {
+  // ✅ Scroll to the products section and trigger product change
+  const handleProductClick = (e, productName) => {
     e.preventDefault();
     setShowProducts(false);
-    handleSectionClick('products'); // ✅ matches your section ID
+
+    // Dispatch a custom event that Product.js listens for
+    window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
+
+    // Smooth scroll to product section
+    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      {/* --- Top Bar --- */}
       <div className="top-bar">
         <span><Clock size={16} /> Sun–Mon: 10:00am to 9:00pm</span>
         <div>
@@ -59,6 +65,7 @@ export default function Header() {
         </div>
       </div>
 
+      {/* --- Navbar --- */}
       <nav className="navbar">
         <div className="logo">
           <Link href="/">
@@ -81,6 +88,7 @@ export default function Header() {
               Home
             </Link>
           </li>
+
           <li>
             <Link
               href="/about"
@@ -97,15 +105,16 @@ export default function Header() {
             onMouseLeave={() => setShowProducts(false)}
           >
             <button className="dropdown-btn">
-              Products 
+              Products
               <ChevronDown size={16} className="dropdown-icon" />
             </button>
+
             {showProducts && (
               <ul className="dropdown-menu">
-                <li><a href="#products" onClick={handleProductClick}>LYF SUITE</a></li>
-                <li><a href="#products" onClick={handleProductClick}>DTP</a></li>
-                <li><a href="#products" onClick={handleProductClick}>D-WIN</a></li>
-                <li><a href="#products" onClick={handleProductClick}>LYF DATA</a></li>
+                <li><a href="#products" onClick={(e) => handleProductClick(e, "LYF Suite")}>LYF SUITE</a></li>
+                <li><a href="#products" onClick={(e) => handleProductClick(e, "DTP")}>DTP</a></li>
+                <li><a href="#products" onClick={(e) => handleProductClick(e, "D-TWIN")}>D-TWIN</a></li>
+                <li><a href="#products" onClick={(e) => handleProductClick(e, "LYF-DATA")}>LYF DATA</a></li>
               </ul>
             )}
           </li>
@@ -120,6 +129,7 @@ export default function Header() {
               Services
             </Link>
           </li>
+
           <li>
             <Link
               href="/#expertise"
@@ -130,7 +140,7 @@ export default function Header() {
               Expertise
             </Link>
           </li>
-         
+
           <li>
             <Link
               href="/#contact"
@@ -145,7 +155,7 @@ export default function Header() {
         </ul>
       </nav>
 
-      {/* ✅ Dropdown styling */}
+      {/* --- Dropdown Styling --- */}
       <style jsx>{`
         .dropdown {
           position: relative;
