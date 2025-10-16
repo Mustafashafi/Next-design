@@ -676,42 +676,7 @@ margin-left: 80px;
     max-width: 100%;
   }
 }
-/* QUICK GUIDES GRID */
-.guide-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
 
-@media (max-width: 980px) {
-  .guide-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 640px) {
-  .guide-grid { grid-template-columns: 1fr; }
-
-  .partner-content {
-    flex-direction: column; /* stack text above image on mobile */
-    text-align: center;
-  }
-
-  .partner-image {
-    text-align: center;
-  }
-}
-
-.guide-card {
-  text-align: center;
-  border-radius: 10px;
-  background: var(--card-bg);
-  padding: 12px;
-  box-shadow: 0 8px 20px rgba(2,22,49,0.03);
-}
-
-.guide-card img {
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
 
 
 /* -------------------------
@@ -794,69 +759,127 @@ color: #186cb5;
 
 /* QUICK GUIDES GRID */
 .quick-guides {
-  margin: 100px 50px;
+  margin: 100px auto;
   max-width: 1400px;
   padding: 0 20px;
-  position: relative; /* Needed for absolute positioning of arrows */
+  position: relative;
 }
 
 /* HEADING STYLES */
 .quick-guides h1 {
   font-size: 42px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   line-height: 1.2;
   color: #186cb5;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.quick-guides h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #51acca;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 /* BUTTON STYLES */
 .quick-guides button {
-  padding: 12px 30px;
+  padding: 14px 36px;
   font-size: 18px;
-  background-color: #51acca;
+  background: linear-gradient(135deg, #51acca, #186cb5);
   border-radius: 50px;
   color: #fff;
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
   display: block;
-  margin: 0 auto 40px;
+  margin: 0 auto 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(81, 172, 202, 0.4);
 }
 
 .quick-guides button:hover {
-  background-color: #4bb7df;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #4bb7df, #1a7dd1);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(81, 172, 202, 0.5);
+}
+
+/* GUIDE GRID */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
 }
 
 /* GUIDE CARD */
 .guide-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(81, 172, 202, 0.1);
+}
+
+.guide-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(81, 172, 202, 0.1), transparent 70%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.guide-card:hover::before {
+  opacity: 1;
 }
 
 .guide-card:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(81, 172, 202, 0.25);
 }
 
 /* IMAGE STYLING */
 .guide-card img {
   width: 100%;
-  height: 300px;
+  height: 400px;
   object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 12px;
-  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  z-index: 1;
+  position: relative;
 }
 
 .guide-card img:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  filter: brightness(1.05);
+}
+
+/* CARD CONTENT */
+.guide-card h3 {
+  font-size: 22px;
+  color: #186cb5;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.guide-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  padding: 0 10px;
 }
 
 /* CUSTOM SWIPER NAVIGATION BUTTONS TOP-RIGHT */
@@ -865,7 +888,7 @@ color: #186cb5;
   top: 70px;
   right: 100px;
   display: flex;
-  gap: 10px; /* Space between prev and next */
+  gap: 12px;
   z-index: 10;
 }
 
@@ -873,23 +896,23 @@ color: #186cb5;
 .custom-next {
   width: 50px;
   height: 50px;
-  background: rgba(255, 255, 255, 0.85);
-  
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  font-size: 24px;
+  font-size: 22px;
   transition: all 0.3s ease;
-  border:3px solid #51acca;
+  border: 3px solid #51acca;
 }
 
 .custom-prev:hover,
 .custom-next:hover {
   background: #51acca;
   color: #fff;
+  transform: scale(1.1);
 }
 
 /* SWIPER PAGINATION DOTS */
@@ -899,61 +922,30 @@ color: #186cb5;
   width: 12px;
   height: 12px;
   margin: 0 4px !important;
+  transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
   opacity: 1;
-  transform: scale(1.2);
+  transform: scale(1.3);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .custom-prev {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-  }
-  .custom-next {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-  }
+/* RESPONSIVE STYLES */
+@media (max-width: 980px) {
+  .guide-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 992px) {
-  .guide-card img {
-    height: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  .guide-card img {
-    height: 220px;
-  }
-  .quick-guides button {
-    font-size: 16px;
-    padding: 10px 24px;
-  }
-  .custom-prev,
-  .custom-next {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-  }
+@media (max-width: 640px) {
+  .guide-grid { grid-template-columns: 1fr; }
+  .guide-card img { height: 220px; }
+  .quick-guides h1 { font-size: 32px; }
+  .custom-prev, .custom-next { width: 35px; height: 35px; font-size: 18px; }
 }
 
 @media (max-width: 480px) {
-  .guide-card img {
-    height: 180px;
-  }
-  .custom-prev,
-  .custom-next {
-    width: 25px;
-    height: 25px;
-    font-size: 16px;
-  }
+  .guide-card img { height: 180px; }
+  .custom-prev, .custom-next { width: 28px; height: 28px; font-size: 16px; }
 }
-
 
 
 
@@ -1013,6 +1005,9 @@ color: #186cb5;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.contact-details strong{
+  color: #186cb5;
 }
 
 .contact-wrapper {
