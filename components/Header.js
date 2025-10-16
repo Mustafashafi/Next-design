@@ -65,7 +65,7 @@ export default function Header() {
       <div className="top-bar">
         <span><Clock size={16} /> Sun–Mon: 10:00am to 9:00pm</span>
         <div>
-          <a href="mailto:info@example.com"><Mail size={16} /> info@example.com</a>
+          <a href="mailto:info@ai4lyf.com"><Mail size={16} /> info@ai4lyf.com</a>
           <a href="tel:+8801765896254"><Phone size={16} /> +8801765896254</a>
         </div>
       </div>
