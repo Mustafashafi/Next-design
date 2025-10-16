@@ -18,7 +18,7 @@ export default function Testimonials() {
       name: "Omar Khan",
       role: "Government Health Advisor",
       review:
-        "Our department used AI4LYF’s AI-powered analytics for epidemic management, and the results were remarkable.",
+        "Our department used AI4LYF’s AI-powered analytics for epidemic management.",
       img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80",
     },
     {
