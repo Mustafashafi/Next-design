@@ -1,8 +1,34 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+
+    // If we're already on the homepage, just scroll smoothly
+    if (pathname === "/") {
+      const section = document.querySelector(targetId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If on another page, go to home and then scroll
+      router.push("/" + targetId);
+      setTimeout(() => {
+        const section = document.querySelector(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 800);
+    }
+  };
+
   return (
     <footer className="site-footer">
       <div className="footer-container">
@@ -31,10 +57,14 @@ export default function Footer() {
         <div className="footer-section">
           <h4>Quick Links</h4>
           <ul className="footer-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Request Demo</a></li>
+            <li><Link href="/">Home</Link></li>
+
+            {/* About goes to another page */}
+            <li><Link href="/about">About</Link></li>
+
+            {/* Products and Request Demo scroll to sections on home page */}
+            <li><a href="#products" onClick={(e) => handleScroll(e, "#products")}>Products</a></li>
+            <li><a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Request Demo</a></li>
           </ul>
         </div>
 
