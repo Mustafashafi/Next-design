@@ -18,7 +18,7 @@ header {
   transition: backdrop-filter 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Add blur + shadow when scrolled */
+
 header.scrolled {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.6);
@@ -75,7 +75,7 @@ header.scrolled {
 }
 
 
-/* HERO SECTION */
+
 .hero {
   display: flex;
   justify-content: space-between;
@@ -129,13 +129,13 @@ header.scrolled {
   background-size: cover;
   background-position: center;
   width: 50%;
-  height: 642px; /* add a height or it won’t show */
+  height: 642px; 
   margin-right: -60px;
   margin-top: -80px;
   border-radius: 0 0 0 250px;
 }
 
-/*Brands*/
+
 
 .brands img{
   padding-right: 70px;
@@ -145,7 +145,7 @@ header.scrolled {
 }
 
 
-/* SERVICES */
+
 .service-header{
     width:100%;
     border: 0px #47a1ef ;
@@ -231,9 +231,7 @@ header.scrolled {
   
 }
 
-/* -------------------------
-   PRODUCTS (image left, text right)
-   ------------------------- */
+
    .products-section{
     
     margin-top: 30px;
@@ -283,7 +281,7 @@ header.scrolled {
   box-shadow: 0 10px 28px rgba(0,128,255,0.12);
 }
 
-/* product display row: image left, text right */
+
 .product-display {
   display: flex;
   align-items: center;
@@ -294,7 +292,7 @@ header.scrolled {
   margin-left: 100px;
 }
 
-/* product image block */
+
 .product-img {
   flex: 0 0 48%;
   max-width: 48%;
@@ -307,7 +305,7 @@ header.scrolled {
   display: block;
 }
 
-/* product info block (right) */
+
 .product-info {
   flex: 1;
   min-width: 320px;
@@ -333,7 +331,7 @@ header.scrolled {
 }
 .link-more:hover { text-decoration: underline; }
 
-/* mini product row (below main product) */
+
 .product-rows-alt {
   display: flex;
   gap: 18px;
@@ -348,7 +346,7 @@ header.scrolled {
 .mini-product img { width: 100%; border-radius: 10px; }
 .mini-title { margin-top: 10px; font-weight: 600; }
 
-/* === Section Wrapper === */
+
 .expertise-section {
   padding: 110px 0;
   background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
@@ -356,7 +354,7 @@ header.scrolled {
   overflow: hidden;
 }
 
-/* Decorative background glow */
+
 .expertise-section::before {
   content: "";
   position: absolute;
@@ -379,7 +377,7 @@ header.scrolled {
   text-align: center;
 }
 
-/* === Section Title === */
+
 .expertise-section h2 {
   font-size: 2.8rem !important;
   font-weight: 800;
@@ -400,14 +398,14 @@ header.scrolled {
   box-shadow: 0 2px 10px rgba(14,165,233,0.4);
 }
 
-/* === Expertise Grid === */
+
 .expertise-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 35px;
 }
 
-/* === Card === */
+
 .expert-card {
   position: relative;
   background: rgba(255, 255, 255, 0.85);
@@ -426,13 +424,13 @@ header.scrolled {
   box-shadow: 0 20px 50px rgba(14,165,233,0.25);
 }
 
-/* === Floating Animation === */
+
 @keyframes floatCard {
   0% { transform: translateY(0px); }
   100% { transform: translateY(-5px); }
 }
 
-/* === Video Styling === */
+
 .expert-video {
   width: 100%;
   height: 230px;
@@ -446,7 +444,7 @@ header.scrolled {
   transform: scale(1.05);
 }
 
-/* === Text Content === */
+
 .expert-text {
   padding: 28px 28px 12px;
 }
@@ -464,7 +462,7 @@ header.scrolled {
   color: #186cb5;
 }
 
-/* === Description === */
+
 .expert-description {
   padding: 0 28px 28px;
   color: #475569;
@@ -476,7 +474,7 @@ header.scrolled {
   animation: slideDown 0.35s ease forwards;
 }
 
-/* === Button === */
+
 .btn-outline.small {
   background: transparent;
   color: #186cb5 !important;
@@ -496,7 +494,7 @@ header.scrolled {
   transform: translateY(-2px);
 }
 
-/* === Animations === */
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -508,7 +506,7 @@ header.scrolled {
   }
 }
 
-/* === Responsive === */
+
 @media (max-width: 768px) {
   .expertise-section {
     padding: 80px 0;
@@ -541,11 +539,9 @@ header.scrolled {
   }
 }
 
-/* -------------------------
-   PARTNER & QUICK GUIDES
-   ------------------------- */
 
-/* PARTNER SECTION BASE */
+
+
 .partner-section0 {
   
   padding: 80px 0;
@@ -579,7 +575,7 @@ color: #186cb5;
   
 }
 
-/* LEFT SIDE - ACCORDION */
+
 .partner-left {
   flex: 1;
   width: 50%;
@@ -589,7 +585,7 @@ border-radius: 20px;
 margin-left: 80px;
 }
 
-/* ACCORDION ITEM */
+
 .accordion-item {
   
   transition: all 0.3s ease;
@@ -600,7 +596,7 @@ margin-left: 80px;
   transform: translateY(-2px);
 }
 
-/* ACCORDION TITLE */
+
 .accordion-title {
   padding: 15px 20px;
   font-size: 25px;
@@ -611,7 +607,7 @@ margin-left: 80px;
 }
 
 
-/* ACCORDION CONTENT */
+
 .accordion-content {
   background-color: #186cb5;
   padding: 15px 20px;
@@ -621,7 +617,7 @@ margin-left: 80px;
   color: white;
 }
 
-/* FADE-IN ANIMATION */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -633,7 +629,7 @@ margin-left: 80px;
   }
 }
 
-/* RIGHT SIDE — VIDEO */
+
 .partner-right {
   flex: 1;
   width: 50%;
@@ -652,7 +648,7 @@ margin-left: 80px;
   height: 350px;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 992px) {
   .partner-container {
     flex-direction: column;
@@ -679,16 +675,14 @@ margin-left: 80px;
 
 
 
-/* -------------------------
-   PARTNER & QUICK GUIDES
-   ------------------------- */
+
 .partner-content {
   display: flex;
   gap: 30px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  flex-direction: row; /* ensure row layout */
+  flex-direction: row; 
   margin: 0 100px;
   color: #155fb3;
   font-size: 20px;
@@ -697,7 +691,7 @@ margin-left: 80px;
 .partner-text {
   flex: 1;
   min-width: 260px;
-  order: 1; /* text comes first */
+  order: 1; 
 }
 .partner-text p {
  font-size: 25px;
@@ -706,7 +700,7 @@ margin-left: 80px;
 .partner-image {
   flex: 1;
   min-width: 260px;
-  order: 2; /* image comes second (right) */
+  order: 2; 
   text-align: right;
 }
 
@@ -714,7 +708,7 @@ margin-left: 80px;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 10px 28px rgba(2,22,49,0.04);
-  max-width: 500px; /* optional max width */
+  max-width: 500px; 
 }
 
 
@@ -725,7 +719,7 @@ margin-left: 80px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  flex-direction: row; /* ensure row layout */
+  flex-direction: row; 
   margin: 0 50px;
 color: #186cb5;
 }
@@ -733,7 +727,7 @@ color: #186cb5;
 .partner-text1 {
   flex: 1;
   min-width: 260px;
-  order: 2; /* text comes first */
+  order: 2; 
   font-size: 18px;
 }
 .partner-text1 h1{
@@ -745,7 +739,7 @@ color: #186cb5;
 .partner-image1 {
   flex: 1;
   min-width: 260px;
-  order: 1; /* image comes second (right) */
+  order: 1; 
   text-align: right;
 }
 
@@ -753,11 +747,11 @@ color: #186cb5;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 10px 28px rgba(2,22,49,0.04);
-  max-width: 500px; /* optional max width */
+  max-width: 500px; 
 }
 
 
-/* QUICK GUIDES GRID */
+
 .quick-guides {
   margin: 100px auto;
   max-width: 1400px;
@@ -765,7 +759,7 @@ color: #186cb5;
   position: relative;
 }
 
-/* HEADING STYLES */
+
 .quick-guides h1 {
   font-size: 42px;
   margin-bottom: 30px;
@@ -788,7 +782,7 @@ color: #186cb5;
   border-radius: 2px;
 }
 
-/* BUTTON STYLES */
+
 .quick-guides button {
   padding: 14px 36px;
   font-size: 18px;
@@ -811,14 +805,14 @@ color: #186cb5;
   box-shadow: 0 10px 25px rgba(81, 172, 202, 0.5);
 }
 
-/* GUIDE GRID */
+
 .guide-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
-/* GUIDE CARD */
+
 .guide-card {
   background: #fff;
   border-radius: 18px;
@@ -850,7 +844,7 @@ color: #186cb5;
   box-shadow: 0 20px 40px rgba(81, 172, 202, 0.25);
 }
 
-/* IMAGE STYLING */
+
 .guide-card img {
   width: 100%;
   height: 400px;
@@ -867,7 +861,7 @@ color: #186cb5;
   filter: brightness(1.05);
 }
 
-/* CARD CONTENT */
+
 .guide-card h3 {
   font-size: 22px;
   color: #186cb5;
@@ -882,7 +876,7 @@ color: #186cb5;
   padding: 0 10px;
 }
 
-/* CUSTOM SWIPER NAVIGATION BUTTONS TOP-RIGHT */
+
 .swiper-buttons {
   position: absolute;
   top: 70px;
@@ -915,7 +909,7 @@ color: #186cb5;
   transform: scale(1.1);
 }
 
-/* SWIPER PAGINATION DOTS */
+
 .swiper-pagination-bullet {
   background-color: #51acca;
   opacity: 0.8;
@@ -930,7 +924,7 @@ color: #186cb5;
   transform: scale(1.3);
 }
 
-/* RESPONSIVE STYLES */
+
 @media (max-width: 980px) {
   .guide-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -951,7 +945,7 @@ color: #186cb5;
 
 
 
-/* VISION SECTION */
+
 .vision {
   display: flex;
   align-items: center;
@@ -993,12 +987,8 @@ color: #186cb5;
 }
 
 
-/* -------------------------
-   CONTACT SECTION
-------------------------- */
-/* -------------------------
-   CONTACT SECTION
-------------------------- */
+
+
 .contact-section {
   background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
   padding: 100px 20px;
@@ -1020,7 +1010,7 @@ color: #186cb5;
   flex-wrap: wrap;
 }
 
-/* LEFT SIDE - TEXT */
+
 .contact-text {
   flex: 1;
   min-width: 320px;
@@ -1052,7 +1042,7 @@ color: #186cb5;
   color: #0a2342;
 }
 
-/* RIGHT SIDE - FORM CARD */
+
 .contact-form-card {
   flex: 1;
   background: #ffffff;
@@ -1068,7 +1058,7 @@ color: #186cb5;
   box-shadow: 0 16px 45px rgba(0, 100, 200, 0.25);
 }
 
-/* FORM STYLES */
+
 .contact-form {
   display: grid;
   gap: 20px;
@@ -1106,7 +1096,7 @@ textarea {
   resize: vertical;
 }
 
-/* BUTTON */
+
 .btn-submit {
   background: linear-gradient(90deg, #186cb5 0%, #2388e0 100%);
   color: white;
@@ -1130,7 +1120,7 @@ textarea {
   box-shadow: 0 8px 20px rgba(0, 122, 255, 0.25);
 }
 
-/* RESPONSIVE DESIGN */
+
 @media (max-width: 992px) {
   .contact-wrapper {
     flex-direction: column;
@@ -1160,7 +1150,7 @@ textarea {
   }
 }
 
-/* Expertise section */
+
 .expertise-section {
   padding: 80px 0;
   background: var(--bg-light);
@@ -1233,9 +1223,7 @@ textarea {
 }
 
 
-/* -------------------------
-   FOOTER
-   ------------------------- */
+
 .site-footer {
   background: #071428;
   color: #dfeaf7;
@@ -1263,9 +1251,7 @@ textarea {
 }
 
 
-/* -------------------------
-   RESPONSIVE BREAKPOINTS
-   ------------------------- */
+
 @media (max-width: 1100px) {
   .product-display { gap: 24px; }
   .product-img { flex: 0 0 46%; max-width: 46%; }
@@ -1365,7 +1351,7 @@ textarea {
   will-change: transform, opacity;
 }
 
-/* Variety for each section */
+
 .what-we-do { animation-name: slideUp; }
 .products-section { animation-name: fadeInZoom; }
 .expertise-section { animation-name: zoomIn; }
@@ -1375,7 +1361,7 @@ textarea {
 .quick-guides { animation-name: fadeInUp; }
 .contact-section { animation-name: fadeInRight; }
 
-/* Child element stagger */
+
 .icon-cards .icon-card,
 .expertise-grid .expert-card,
 .quick-guides .guide-card {
@@ -1399,9 +1385,7 @@ textarea {
 .expertise-grid .expert-card:nth-child(5) { animation-delay: 0.5s; }
 .expertise-grid .expert-card:nth-child(6) { animation-delay: 0.6s; }
 
-/* ======================================
-   ✴️ ENTRANCE ANIMATIONS
-   ====================================== */
+
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(50px); }
@@ -1448,9 +1432,7 @@ textarea {
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* ======================================
-   💫 ATTENTION / LOOPING ANIMATIONS
-   ====================================== */
+
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
@@ -1477,14 +1459,12 @@ textarea {
   100% { transform: rotate(0deg); }
 }
 
-/* Hover triggers */
+
 .call-to-action-btn:hover { animation: pulse 1s infinite; }
 .icon:hover { animation: swing 1s ease-in-out; }
 .logo:hover { animation: shake 0.6s; }
 
-/* ======================================
-   🌊 FLOATING & PARALLAX MOTION
-   ====================================== */
+
 
 @keyframes float {
   0% { transform: translateY(0); }
@@ -1506,9 +1486,7 @@ textarea {
 .bg-circle { animation: slowRotate 20s linear infinite; }
 .glowing-border { animation: glowPulse 2s ease-in-out infinite; }
 
-/* ======================================
-   ⚡ HOVER EFFECTS
-   ====================================== */
+
 
 .card {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -1541,9 +1519,7 @@ textarea {
   color: #fff;
 }
 
-/* ======================================
-   📝 TEXT EFFECTS
-   ====================================== */
+
 
 @keyframes typing {
   from { width: 0; }
@@ -1562,9 +1538,7 @@ textarea {
   animation: typing 3s steps(30, end), blink 0.6s step-end infinite alternate;
 }
 
-/* ======================================
-   🌌 GRADIENT BACKGROUND ANIMATION
-   ====================================== */
+
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -1628,7 +1602,7 @@ textarea {
   color: #888;
   font-size: 0.9rem;
 }
-/* Reduce general padding/margin on smaller screens */
+
 @media (max-width: 768px) {
   body {
     font-size: 14px;

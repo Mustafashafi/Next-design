@@ -11,14 +11,14 @@ export default function About() {
     <>
       <Header />
 
-      {/* === Hero Section === */}
+     
       <Hero  headingStyle={{
         marginTop:"100px",
-          fontSize: "40px",      // ≈ text-4xl
+          fontSize: "40px",      
     color: "#186cb5"
         }}
         textStyle={{
-          fontSize: "1.4rem",      // ≈ text-4xl
+          fontSize: "1.4rem",      
     color: "#186cb5"
         }}
 

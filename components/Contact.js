@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="contact-wrapper">
-        {/* LEFT SIDE - TEXT CONTENT */}
+        
         <div className="contact-text" style={{ marginTop: "-400px" }}>
           <h2 className="contact-title" style={{color:"#186cb5"}}>Let’s Work Together</h2>
           <p className="contact-subtitle">
@@ -28,7 +28,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* RIGHT SIDE - FORM CARD */}
+       
         <div className="contact-form-card">
           <form className="contact-form" action="#" method="post">
             <div className="form-row">

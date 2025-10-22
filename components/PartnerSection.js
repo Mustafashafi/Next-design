@@ -25,7 +25,7 @@ export default function PartnerSection() {
                 style={{ display: "flex", justifyContent: "space-between", cursor: "pointer" }}
               >
                 {p.title}
-                <span>{active === i ? "▲" : "▼"}</span> {/* Up/Down arrow */}
+                <span>{active === i ? "▲" : "▼"}</span> 
               </div>
               {active === i && <div className="accordion-content">{p.content}</div>}
             </div>

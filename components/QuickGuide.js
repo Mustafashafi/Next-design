@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 export default function QuickGuide({ title, pdf }) {
   const guides = [1, 2, 3, 4, 5];
 
-  // Create refs for navigation buttons
+ 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -21,7 +21,7 @@ export default function QuickGuide({ title, pdf }) {
         Download PDF Brochure
       </button>
 
-      {/* Custom navigation buttons */}
+     
       <div className="swiper-buttons">
         <div ref={prevRef} className="custom-prev">&#10094;</div>
         <div ref={nextRef} className="custom-next">&#10095;</div>
@@ -36,7 +36,7 @@ export default function QuickGuide({ title, pdf }) {
           nextEl: nextRef.current,
         }}
         onBeforeInit={(swiper) => {
-          // Bind the refs properly before initialization
+          
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
         }}

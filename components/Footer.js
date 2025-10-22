@@ -11,14 +11,12 @@ export default function Footer() {
   const handleScroll = (e, targetId) => {
     e.preventDefault();
 
-    // If we're already on the homepage, just scroll smoothly
     if (pathname === "/") {
       const section = document.querySelector(targetId);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // If on another page, go to home and then scroll
       router.push("/" + targetId);
       setTimeout(() => {
         const section = document.querySelector(targetId);
@@ -32,7 +30,6 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-container">
-        {/* Logo & About */}
         <div className="footer-section footer-about">
           <Image
             src="/images/logo_color.webp"
@@ -53,22 +50,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
         <div className="footer-section">
           <h4>Quick Links</h4>
           <ul className="footer-links">
             <li><Link href="/">Home</Link></li>
-
-            {/* About goes to another page */}
             <li><Link href="/about">About</Link></li>
-
-            {/* Products and Request Demo scroll to sections on home page */}
             <li><a href="#products" onClick={(e) => handleScroll(e, "#products")}>Products</a></li>
             <li><a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Request Demo</a></li>
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div className="footer-section footer-contact">
           <h4>Contact</h4>
           <p><strong>Email:</strong> <a href="mailto:info@ai4lyf.com">info@ai4lyf.com</a></p>

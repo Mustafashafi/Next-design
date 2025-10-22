@@ -116,7 +116,7 @@
   font-weight: 600;
 }
 
-/* 🔹 Responsive Enhancements */
+
 @media (max-width: 768px) {
   .footer-container {
     text-align: center;

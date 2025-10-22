@@ -59,8 +59,8 @@ export default function Services() {
             <Image
               src={card.image}
               alt={card.title}
-              width={300}          // adjust size
-              height={200}         // adjust size
+              width={300}          
+              height={200}         
               className="card-image"
               style={{ objectFit: "cover" }}
             />

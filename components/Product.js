@@ -34,7 +34,7 @@ export default function Product() {
   const [activeTab, setActiveTab] = useState("LYF Suite");
   const current = products[activeTab];
 
-  // ✅ Listen for dropdown product clicks from Header (in same page)
+ 
   useEffect(() => {
     const handleProductChange = (event) => {
       const productKey = event.detail;
@@ -48,7 +48,7 @@ export default function Product() {
     return () => window.removeEventListener("selectProduct", handleProductChange);
   }, []);
 
-  // ✅ Handle navigation from other pages (e.g., /about)
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
@@ -57,13 +57,13 @@ export default function Product() {
       if (selectedProduct && products[selectedProduct]) {
         setActiveTab(selectedProduct);
 
-        // Scroll smoothly into view
+        
         document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
 
-        // Dispatch same custom event (so behavior stays consistent)
+        
         window.dispatchEvent(new CustomEvent("selectProduct", { detail: selectedProduct }));
 
-        // ✅ Clean up the URL (remove ?selectedProduct=... so it looks clean)
+        
         const url = new URL(window.location.href);
         url.searchParams.delete("selectedProduct");
         window.history.replaceState({}, "", url.toString());
@@ -77,7 +77,7 @@ export default function Product() {
         <div className="wrap">
           <h2>Our Products</h2>
 
-          {/* Tabs */}
+         
           <div className="tabs">
             {Object.keys(products).map((key) => (
               <button
@@ -91,9 +91,9 @@ export default function Product() {
           </div>
           <br />
 
-          {/* Product Display */}
+         
           <div className="product-display flex items-center gap-10 mt-6 flex-wrap md:flex-nowrap">
-            {/* Image */}
+            
             <div className="product-img w-full md:w-1/2">
               <AnimatePresence mode="wait">
                 <motion.div

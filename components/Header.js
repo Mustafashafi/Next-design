@@ -42,26 +42,22 @@ export default function Header() {
     }
   };
 
-  // ✅ Fixed: Handle product click from any page
   const handleProductClick = (e, productName) => {
     e.preventDefault();
     setShowProducts(false);
 
     if (pathname !== '/') {
-      // If not on home, go to home with query + hash
       const encoded = encodeURIComponent(productName);
       router.push(`/?selectedProduct=${encoded}#products`);
       return;
     }
 
-    // If already on home, just dispatch event + scroll
     window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
     document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      {/* --- Top Bar --- */}
       <div className="top-bar">
         <span><Clock size={16} /> Sun–Mon: 10:00am to 9:00pm</span>
         <div>
@@ -70,7 +66,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* --- Navbar --- */}
       <nav className="navbar">
         <div className="logo">
           <Link href="/">
@@ -103,7 +98,6 @@ export default function Header() {
             </Link>
           </li>
 
-          {/* ✅ Products Dropdown */}
           <li
             className="dropdown"
             onMouseEnter={() => setShowProducts(true)}
@@ -160,7 +154,6 @@ export default function Header() {
         </ul>
       </nav>
 
-      {/* --- Dropdown Styling --- */}
       <style jsx>{`
         .dropdown {
           position: relative;

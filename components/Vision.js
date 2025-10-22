@@ -5,10 +5,10 @@ export default function Vision() {
     <section id="about" className="vision">
       <div className="vision-image">
         <Image
-          src="/images/girl1.png"   // Make sure the file name matches exactly (case-sensitive)
+          src="/images/girl1.png"  
           alt="Doctor"
-          width={400}                 // adjust as needed
-          height={400}                // adjust as needed
+          width={400}               
+          height={400}               
           style={{ objectFit: "cover", borderRadius: "12px" }}
         />
       </div>
