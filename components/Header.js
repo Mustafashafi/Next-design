@@ -33,12 +33,13 @@ export default function Header() {
 
   const linkColor = '#186cb5';
 
+  // Scroll to section only if we are on home page
   const handleSectionClick = (sectionId) => {
-    if (pathname !== '/') {
-      router.push('/' + (sectionId ? `#${sectionId}` : ''));
-    } else {
+    if (pathname === '/') {
       const section = document.getElementById(sectionId);
       if (section) section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push('/'); // just navigate to home
     }
   };
 
@@ -46,14 +47,13 @@ export default function Header() {
     e.preventDefault();
     setShowProducts(false);
 
-    if (pathname !== '/') {
+    if (pathname === '/') {
+      window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
+      document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+    } else {
       const encoded = encodeURIComponent(productName);
       router.push(`/?selectedProduct=${encoded}#products`);
-      return;
     }
-
-    window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
-    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -84,6 +84,10 @@ export default function Header() {
             <Link
               href="/"
               style={{ color: activeSection === 'home' && pathname === '/' ? linkColor : 'inherit' }}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push('/');
+              }}
             >
               Home
             </Link>
@@ -93,6 +97,10 @@ export default function Header() {
             <Link
               href="/about"
               style={{ color: pathname === '/about' ? linkColor : 'inherit' }}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push('/about'); // navigate only
+              }}
             >
               About
             </Link>
@@ -123,7 +131,7 @@ export default function Header() {
               href="/#services"
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('services'); }}
-              style={{ color: activeSection === 'services' ? linkColor : 'inherit' }}
+              style={{ color: activeSection === 'services' && pathname === '/' ? linkColor : 'inherit' }}
             >
               Services
             </Link>
@@ -134,7 +142,7 @@ export default function Header() {
               href="/#expertise"
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('expertise'); }}
-              style={{ color: activeSection === 'expertise' ? linkColor : 'inherit' }}
+              style={{ color: activeSection === 'expertise' && pathname === '/' ? linkColor : 'inherit' }}
             >
               Expertise
             </Link>
@@ -146,7 +154,7 @@ export default function Header() {
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('contact'); }}
               className="contact-link"
-              style={{ color: activeSection === 'contact' ? linkColor : 'inherit' }}
+              style={{ color: activeSection === 'contact' && pathname === '/' ? linkColor : 'inherit' }}
             >
               Contact Us
             </Link>

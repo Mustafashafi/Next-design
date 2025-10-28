@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 
 import Vision from '../components/Vision';
 import Team from '../components/Team';
+import Chat from '../components/Chat';
 
 export default function About() {
   return (
@@ -35,7 +36,7 @@ export default function About() {
 <Vision />
 <Team />
       <br /><br /><br />
-
+<Chat />
       <Footer />
     </>
   );
