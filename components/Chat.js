@@ -9,9 +9,26 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const chatBoxRef = useRef(null);
 
-  const scrollToBottom = () => {
-    if (chatBoxRef.current) {
-      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+  // ✅ Smart scroll handling
+  const scrollToBottom = (smooth = true) => {
+    const chatBox = chatBoxRef.current;
+    if (!chatBox) return;
+
+    const isNearBottom =
+      chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 100;
+
+    if (isNearBottom) {
+      // Scroll fully to bottom when near bottom
+      chatBox.scrollTo({
+        top: chatBox.scrollHeight,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    } else {
+      // Scroll slightly to reveal new message
+      chatBox.scrollBy({
+        top: 80,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -44,7 +61,7 @@ export default function Chat() {
       }
 
       setMessages((prev) => [...prev, { sender: 'AI', text: botReply }]);
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { sender: 'AI', text: 'Error connecting to AI agent.' },
@@ -105,7 +122,7 @@ export default function Chat() {
           display: flex;
           justify-content: center;
           align-items: center;
-          min-height: 90vh;
+          min-height: 100vh;
           background: linear-gradient(135deg, #eef2f3, #dfe9f3);
           padding: 20px;
         }
@@ -118,6 +135,7 @@ export default function Chat() {
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          transition: all 0.4s ease;
         }
 
         .chat-header {
@@ -137,12 +155,30 @@ export default function Chat() {
           font-size: 20px;
         }
 
+        /* ✅ Dynamic height & scrollbar after max height */
         .chat-box {
-          flex: 1;
           padding: 16px;
-          overflow-y: auto;
           background: #f8fafc;
+          overflow-y: auto;
           scroll-behavior: smooth;
+          transition: all 0.4s ease;
+
+          min-height: 120px;
+          max-height: 320px;
+          height: auto;
+        }
+
+        .chat-box::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 8px;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
         }
 
         .message {
@@ -166,6 +202,7 @@ export default function Chat() {
           font-size: 15px;
           line-height: 1.4;
           word-wrap: break-word;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .user .bubble {
