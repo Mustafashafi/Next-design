@@ -35,13 +35,28 @@ By combining Artificial Intelligence, biosensing technologies, and real-time con
       <PartnerChart />
       <PartnerWhy />
       <QuickGuide
-        title="LYF Suite Quick Guide"
-        pdf="/LYF-Suite-Brochure.pdf"
-      />
-      <QuickGuide
-        title="Respire LYF Quick Guide"
-        pdf="/Respire-LYF-Broucher.pdf"
-      />
+  title="LYF Suite Quick Guide"
+  pdf="/LYF-Suite-Brochure.pdf"
+  images={[
+    "/1.png",
+    "/2.jpg",
+    "/3.jpg",
+    "/4.jpg",
+    "/5.jpg"
+  ]}
+/>
+
+<QuickGuide
+  title="Respire LYF Quick Guide"
+  pdf="/Respire-LYF-Broucher.pdf"
+  images={[
+    "/respire-1.png",
+    "/respire-2.png",
+    "/respire-3.png",
+    "/respire-4.png"
+  ]}
+/>
+
      <Testimonials />
       <Contact />
       <Footer />

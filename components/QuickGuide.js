@@ -7,10 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function QuickGuide({ title, pdf }) {
-  const guides = [1, 2, 3, 4, 5];
-
- 
+export default function QuickGuide({ title, pdf, images }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -21,7 +18,6 @@ export default function QuickGuide({ title, pdf }) {
         Download PDF Brochure
       </button>
 
-     
       <div className="swiper-buttons">
         <div ref={prevRef} className="custom-prev">&#10094;</div>
         <div ref={nextRef} className="custom-next">&#10095;</div>
@@ -36,7 +32,6 @@ export default function QuickGuide({ title, pdf }) {
           nextEl: nextRef.current,
         }}
         onBeforeInit={(swiper) => {
-          
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
         }}
@@ -49,22 +44,19 @@ export default function QuickGuide({ title, pdf }) {
           1200: { slidesPerView: 4 },
         }}
       >
-        {guides.map((num) => {
-          const ext = [1, 5].includes(num) ? "png" : "jpg";
-          return (
-            <SwiperSlide key={num}>
-              <div className="guide-card">
-                <Image
-                  src={`/${num}.${ext}`}
-                  alt={`Guide ${num}`}
-                  width={400}
-                  height={300}
-                  className="rounded shadow-md object-cover"
-                />
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {images.map((src, index) => (
+          <SwiperSlide key={index}>
+            <div className="guide-card">
+              <Image
+                src={src}
+                alt={`Guide ${index + 1}`}
+                width={400}
+                height={300}
+                className="rounded shadow-md object-cover"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
