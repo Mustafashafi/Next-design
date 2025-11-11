@@ -17,16 +17,10 @@ export default function Chat() {
     const chatBox = chatBoxRef.current;
     if (!chatBox) return;
 
-    // Get all AI messages and typing bubble
-    const aiMessages = chatBox.querySelectorAll('.message.ai');
-    if (aiMessages.length === 0) return;
-
-    const lastAI = aiMessages[aiMessages.length - 1];
-    // Scroll to top of the last AI message
-    chatBox.scrollTop = lastAI.offsetTop;
+    const lastMessage = chatBox.lastElementChild;
+    if (lastMessage) chatBox.scrollTop = lastMessage.offsetTop;
   };
 
-  // Scroll when messages or loading changes
   useEffect(() => {
     scrollToTopOfLatestAI();
   }, [messages, loading]);
@@ -90,7 +84,7 @@ export default function Chat() {
               {messages.map((msg, idx) => (
                 <div key={idx} className={`message ${msg.sender === 'AI' ? 'ai' : 'user'}`}>
                   <div className="bubble">
-                    <strong>{msg.sender === 'AI' ? 'AI' : 'You'}:</strong> {msg.text}
+                    {msg.text} {/* Removed "AI:" or "You:" */}
                   </div>
                 </div>
               ))}
