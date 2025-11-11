@@ -75,7 +75,7 @@ export default function Chat() {
     <>
       {!open && (
         <button className="chat-toggle" onClick={() => setOpen(true)}>
-          🤖 Chat
+          🤖
         </button>
       )}
 
