@@ -12,17 +12,27 @@ export default function Chat() {
   const [open, setOpen] = useState(false);
   const chatBoxRef = useRef(null);
 
-  // Scroll to top of latest AI message or typing bubble
-  const scrollToTopOfLatestAI = () => {
+  // Scroll to the typing bubble if loading, else top of last AI message
+  const scrollChat = () => {
     const chatBox = chatBoxRef.current;
     if (!chatBox) return;
 
-    const lastMessage = chatBox.lastElementChild;
-    if (lastMessage) chatBox.scrollTop = lastMessage.offsetTop;
+    if (loading) {
+      const typingBubble = chatBox.querySelector('.message.ai .bubble.typing');
+      if (typingBubble) chatBox.scrollTop = typingBubble.offsetTop;
+    } else {
+      const aiMessages = chatBox.querySelectorAll('.message.ai');
+      if (aiMessages.length > 0) {
+        const lastAI = aiMessages[aiMessages.length - 1];
+        chatBox.scrollTop = lastAI.offsetTop;
+      } else {
+        chatBox.scrollTop = chatBox.scrollHeight; // fallback
+      }
+    }
   };
 
   useEffect(() => {
-    scrollToTopOfLatestAI();
+    scrollChat();
   }, [messages, loading]);
 
   const handleSend = async () => {
@@ -34,7 +44,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n3.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n4.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -83,9 +93,7 @@ export default function Chat() {
             <div className="chat-box" ref={chatBoxRef}>
               {messages.map((msg, idx) => (
                 <div key={idx} className={`message ${msg.sender === 'AI' ? 'ai' : 'user'}`}>
-                  <div className="bubble">
-                    {msg.text} {/* Removed "AI:" or "You:" */}
-                  </div>
+                  <div className="bubble">{msg.text}</div>
                 </div>
               ))}
 
