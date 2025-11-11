@@ -46,7 +46,7 @@ Experience a smarter, proactive approach to health that helps you live longer, s
           "/2.jpg",
           "/3.jpg",
           "/4.jpg",
-          "/5.jpg",
+          "/5.png",
         ]}
       />
       <QuickGuide
@@ -57,6 +57,7 @@ Experience a smarter, proactive approach to health that helps you live longer, s
           "/respire-2.png",
           "/respire-3.png",
           "/respire-4.png",
+          "/respire-3.png"
         ]}
       />
       <Testimonials />
