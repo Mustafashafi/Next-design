@@ -9,7 +9,7 @@ export default function Services() {
     {
       title: "Neurology Clinic",
       description: "Improve your strength through many programs.",
-      image: "/4.1.png",
+      image: "/building.png",
       extra: "🧠 Our Neurology Clinic offers brain and nerve system treatments.",
     },
     {
