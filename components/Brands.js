@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Brands() {
   return (
-    <section id="home" className="brands">
+    <section id="brands" className="brands">
       <div className="brands-container">
         <Image
           src="/images/5.png"

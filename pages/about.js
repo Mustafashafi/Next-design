@@ -2,7 +2,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
-
+import Brands from "../components/Brands";
 import Vision from '../components/Vision';
 import Team from '../components/Team';
 import Chat from '../components/Chat';
@@ -34,6 +34,7 @@ export default function About() {
          so everyone can live healthier and longer lives."
       />
 <Vision />
+<Brands />
 <Team />
       <br /><br /><br />
 <Chat />

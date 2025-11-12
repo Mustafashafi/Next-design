@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
-import Brands from "../components/Brands";
+
 import Product from "../components/Product";
 import Expertise from "../components/Expertise";
 import PartnerSection from "../components/PartnerSection";
@@ -31,7 +31,7 @@ Experience a smarter, proactive approach to health that helps you live longer, s
           marginTop: "150px",
         }}
       />
-      <Brands />
+      
       <Services />
       <Product />
       <Expertise />
