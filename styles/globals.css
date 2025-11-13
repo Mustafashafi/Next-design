@@ -943,6 +943,74 @@ color: #186cb5;
   .guide-card img { height: 180px; }
   .custom-prev, .custom-next { width: 28px; height: 28px; font-size: 16px; }
 }
+/* === 3D DEPTH SLIDE EFFECT (QuickGuide ONLY) === */
+.quick-guides .swiper-slide {
+  transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+  transform: scale(0.7);
+  opacity: 0.4;
+  filter: blur(2px);
+  z-index: 1;
+}
+
+.quick-guides .swiper-slide-active {
+  transform: scale(1.2) translateY(-25px);
+  opacity: 1;
+  filter: none;
+  z-index: 5;
+}
+
+.quick-guides .swiper-slide-active .guide-card {
+  box-shadow: 0 25px 50px rgba(24, 108, 181, 0.4);
+  border: 2px solid rgba(81, 172, 202, 0.4);
+  transform: translateY(-8px);
+}
+
+.quick-guides .swiper-slide-prev,
+.quick-guides .swiper-slide-next {
+  transform: scale(0.85);
+  opacity: 0.6;
+  filter: blur(1px);
+  z-index: 2;
+}
+
+.quick-guides .swiper-slide-prev-prev,
+.quick-guides .swiper-slide-next-next {
+  transform: scale(0.7);
+  opacity: 0.3;
+}
+
+.quick-guides .swiper-slide-active .guide-card:hover {
+  transform: scale(1.05) translateY(-12px);
+  box-shadow: 0 35px 60px rgba(81, 172, 202, 0.45);
+}
+
+.quick-guides .guide-card {
+  transition: all 0.4s ease;
+}
+
+/* Responsive scaling */
+@media (max-width: 992px) {
+  .quick-guides .swiper-slide-active {
+    transform: scale(1.1) translateY(-15px);
+  }
+
+  .quick-guides .swiper-slide-prev,
+  .quick-guides .swiper-slide-next {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 640px) {
+  .quick-guides .swiper-slide {
+    transform: scale(0.9);
+    opacity: 0.5;
+    filter: none;
+  }
+  .quick-guides .swiper-slide-active {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
 
 
 

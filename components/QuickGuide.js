@@ -25,8 +25,10 @@ export default function QuickGuide({ title, pdf, images }) {
 
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={25}
-        slidesPerView={4}
+        spaceBetween={30}
+        slidesPerView={3}
+        centeredSlides={true}
+        loop={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -36,12 +38,10 @@ export default function QuickGuide({ title, pdf, images }) {
           swiper.params.navigation.nextEl = nextRef.current;
         }}
         pagination={{ clickable: true }}
-        loop={true}
         breakpoints={{
           320: { slidesPerView: 1 },
           640: { slidesPerView: 2 },
           992: { slidesPerView: 3 },
-          1200: { slidesPerView: 4 },
         }}
       >
         {images.map((src, index) => (
