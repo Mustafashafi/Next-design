@@ -44,7 +44,7 @@ header.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 40px;
+  padding: 10px 40px;
 }
 
 .navbar .logo {
