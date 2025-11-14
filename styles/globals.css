@@ -181,21 +181,27 @@ header.scrolled {
 }
 .book-btn {
   margin-top: 20px;
-  margin-right: -200;
-  background-color: white;
+  background-color: white; /* default background */
+  color: black;          /* white text */
   padding: 12px 30px;
   border: 1px solid white;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-right: -80px;
 }
 
-.book-btn:hover{
-  background-color: rgba(255, 255, 255, 0.945);
-  border: 1px solid rgba(255, 255, 255, 0.945)r ;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  margin-top: 18px;
-  
+/* Hover effect */
+.book-btn:hover {
+  background-color: #186cb5; /* blue background on hover */
+  color: #ffffff;            /* keep text white */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* stronger shadow */
+  transform: translateY(-2px); /* slight lift */
+  border-color: #006ae6;
 }
+
 
 .services {
   text-align: center;
