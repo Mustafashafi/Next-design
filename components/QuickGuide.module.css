@@ -20,11 +20,16 @@
   padding: 10px 30px;
   font-size: large;
   border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  transition: all 0.3s ease; /* smooth hover effect */
 }
 
+/* Hover effect */
 .downloadBtn:hover {
-  background-color: #0765b7;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* stronger shadow on hover */
+  background-color: #417ac6; /* optional: slightly darker blue on hover */
 }
+
 
 .carouselWrapper {
   position: relative;

@@ -216,11 +216,37 @@ header.scrolled {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* default subtle shadow */
   text-align: left;
   max-width: 250px;
   margin-left: 20px;
+  transition: all 0.3s ease; /* smooth transition for hover/active */
+  color: #186cb5; /* default text color */
+  cursor: pointer;
 }
+
+/* Hover effect */
+.card:hover {
+  background-color: #328cdb;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* stronger shadow on hover */
+}
+
+/* Active (clicked) card */
+.card.active {
+  background-color: #328cdb;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* same shadow as hover */
+}
+
+/* Ensure child elements like <h3> and <p> also change color */
+.card.active h3,
+.card.active p,
+.card:hover h3,
+.card:hover p {
+  color: white;
+}
+
 .card-extra-text{
   font-size: 17px;
   padding-top: 10px;

@@ -1,5 +1,6 @@
 'use client';
 
+import { color } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
@@ -98,7 +99,7 @@ export default function Testimonials() {
 
   // Inline styles
   const sectionStyle = { textAlign: "center", padding: "80px 0", background: "#f7f9fc", color: "#1a3f70" };
-  const h1Style = { fontSize: "2.8rem", marginBottom: "50px", fontWeight: 600 };
+  const h1Style = { fontSize: "2.8rem", marginBottom: "50px", fontWeight: 600,color:"#186cb5" };
   const carouselWrapperStyle = { position: "relative", width: "90%", maxWidth: "1000px", margin: "0 auto" };
   const carouselStyle = {
     display: "flex",
