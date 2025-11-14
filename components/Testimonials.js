@@ -1,9 +1,7 @@
+'use client';
+
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { useRef, useEffect, useState } from "react";
 
 export default function Testimonials() {
   const testimonials = [
@@ -44,44 +42,147 @@ export default function Testimonials() {
     },
   ];
 
+  const carouselRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(testimonials.length);
+
+  const loopedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
+  useEffect(() => setMounted(true), []);
+
+  const scrollToSlide = (index) => {
+    if (!mounted) return;
+    const carousel = carouselRef.current;
+    const slides = Array.from(carousel.children);
+    const target = slides[index];
+    const left = target.offsetLeft - (carousel.clientWidth - target.clientWidth) / 2;
+    carousel.scrollTo({ left, behavior: "smooth" });
+    setCurrentIndex(index);
+  };
+
+  const scrollNext = () => {
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= loopedTestimonials.length) nextIndex = testimonials.length;
+    scrollToSlide(nextIndex);
+  };
+
+  const scrollPrev = () => {
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) prevIndex = testimonials.length * 2 - 1;
+    scrollToSlide(prevIndex);
+  };
+
+  useEffect(() => {
+    if (!mounted) return;
+    scrollToSlide(currentIndex);
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const carousel = carouselRef.current;
+    const slides = Array.from(carousel.children);
+    slides.forEach((slide, idx) => {
+      if (idx === currentIndex) {
+        slide.style.transform = "scale(1.05)";
+        slide.style.opacity = "1";
+        slide.style.boxShadow = "0 15px 30px rgba(0,0,0,0.25)";
+      } else {
+        slide.style.transform = "scale(0.85)";
+        slide.style.opacity = "0.5";
+        slide.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+      }
+    });
+  }, [currentIndex, mounted]);
+
+  if (!mounted) return null;
+
+  // Inline styles
+  const sectionStyle = { textAlign: "center", padding: "80px 0", background: "#f7f9fc", color: "#1a3f70" };
+  const h1Style = { fontSize: "2.8rem", marginBottom: "50px", fontWeight: 600 };
+  const carouselWrapperStyle = { position: "relative", width: "90%", maxWidth: "1000px", margin: "0 auto" };
+  const carouselStyle = {
+    display: "flex",
+    gap: "1.5rem",
+    overflowX: "auto",
+    scrollBehavior: "smooth",
+    paddingBottom: "2rem",
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+  };
+  const cardStyle = {
+    flex: "0 0 calc((100% - 3rem)/3)",
+    background: "linear-gradient(135deg, #ffffff 0%, #e6f0ff 100%)",
+    borderRadius: "20px",
+    padding: "30px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    transition: "transform 0.3s, opacity 0.3s, box-shadow 0.3s",
+  };
+  const imgWrapperStyle = { width: "90px", height: "90px", marginBottom: "20px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 4px 15px rgba(0,0,0,0.15)" };
+  const reviewStyle = { fontStyle: "italic", marginBottom: "15px", color: "#444", lineHeight: 1.5 };
+  const arrowBtnStyle = {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    background: "linear-gradient(135deg, #1e6fc1, #549ddc)",
+    border: "1px solid #549ddc",
+    borderRadius: "50%",
+    width: "60px",
+    height: "60px",
+    display: "grid",
+    placeContent: "center",
+    cursor: "pointer",
+    color: "white",
+    fontSize: "2rem",
+    zIndex: 10,
+    boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+    transition: "transform 0.2s, opacity 0.2s",
+    opacity: 0.9,
+  };
+
   return (
-    <section className="section testimonials-section" id="testimonials">
-      <div className="wrap">
-        <h1>What People Say About Us</h1><br />
-        <Swiper style={{margin:"0px 50px"}}
-          modules={[Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={3}
-          pagination={{ clickable: true }}
-          navigation
-          loop={true}
-          className="testimonials-swiper"
-          breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            992: { slidesPerView: 3 },
-          }}
-        ><br />
-          {testimonials.map((t, i) => (
-            <SwiperSlide key={i}>
-              <div className="testimonial-card">
-                <div className="testimonial-img-wrapper">
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    width={120}
-                    height={120}
-                    className="testimonial-img"
-                  />
-                </div>
-                <p className="testimonial-text">“{t.review}”</p>
-                <h4>{t.name}</h4>
-                <span>{t.role}</span>
+    <section style={sectionStyle}>
+      <h1 style={h1Style}>What People Say About Us</h1>
+
+      <div style={carouselWrapperStyle}>
+        <button
+          style={{ ...arrowBtnStyle, left: "-70px" }}
+          onClick={scrollPrev}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1)")}
+        >
+          &#10094;
+        </button>
+
+        <div style={carouselStyle} ref={carouselRef}>
+          {loopedTestimonials.map((t, idx) => (
+            <div key={idx} style={cardStyle}>
+              <div style={imgWrapperStyle}>
+                <Image src={t.img} alt={t.name} width={90} height={90} />
               </div>
-            </SwiperSlide>
+              <p style={reviewStyle}>“{t.review}”</p>
+              <h4 style={{ marginBottom: "5px" }}>{t.name}</h4>
+              <span style={{ color: "#666", fontSize: "0.9rem" }}>{t.role}</span>
+            </div>
           ))}
-        </Swiper>
+        </div>
+
+        <button
+          style={{ ...arrowBtnStyle, right: "-70px" }}
+          onClick={scrollNext}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1)")}
+        >
+          &#10095;
+        </button>
       </div>
+
+      <style jsx>{`
+        div::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }
