@@ -73,6 +73,10 @@ header.scrolled {
   border-radius: 6px;
   transition: all 0.3s ease;
 }
+.contact-link:hover{
+  color: white !important;
+  background-color:#0078ff;
+}
 
 
 
