@@ -12,6 +12,7 @@
   font-size: 40px;
 }
 
+/* PDF Button */
 .downloadBtn {
   background-color: #549ddc;
   color: white;
@@ -20,17 +21,16 @@
   padding: 10px 30px;
   font-size: large;
   border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* subtle shadow */
-  transition: all 0.3s ease; /* smooth hover effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* Hover effect */
 .downloadBtn:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* stronger shadow on hover */
-  background-color: #417ac6; /* optional: slightly darker blue on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background-color: #417ac6;
 }
 
-
+/* Carousel Wrapper */
 .carouselWrapper {
   position: relative;
   width: 90%;
@@ -50,8 +50,9 @@
   display: none;
 }
 
+/* Slides */
 .slide {
-  flex: 0 0 calc((100% - 2rem) / 3); /* 3 slides visible */
+  flex: 0 0 calc((100% - 2rem) / 3);
   scroll-snap-align: center;
   text-align: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -78,15 +79,14 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
 
-/* Arrow buttons */
-/* Arrow buttons */
+/* Updated Arrow Buttons */
 .prevBtn,
 .nextBtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #549ddc; /* improved blue background */
-  border: 2px solid #549ddc; /* same as background */
+  background: linear-gradient(135deg, #1e6fc1 0%, #549ddc 100%);
+  border: 2px solid #549ddc;
   border-radius: 50%;
   cursor: pointer;
   width: 60px;
@@ -94,19 +94,21 @@
   display: grid;
   place-content: center;
   z-index: 10;
-  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
   color: white;
-  font-size: 2rem; /* larger arrow icons */
+  font-size: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0.9;
 }
 
 .prevBtn:hover,
 .nextBtn:hover {
   transform: translateY(-50%) scale(1.2);
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
-  background-color: #0765b7; /* darker blue on hover */
-  border-color: #0765b7; /* match border */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  opacity: 1;
+  background: linear-gradient(135deg, #0657a5 0%, #417ac6 100%);
+  border-color: #417ac6;
 }
 
 .prevBtn { left: -70px; }
 .nextBtn { right: -70px; }
-
