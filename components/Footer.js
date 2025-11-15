@@ -34,8 +34,8 @@ export default function Footer() {
           <Image
             src="/images/logo_color.webp"
             alt="AI4LYF"
-            width={160}
-            height={45}
+            width={170}
+            height={65}
             priority
             className="footer-logo"
           />
