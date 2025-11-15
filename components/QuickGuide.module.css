@@ -1,42 +1,53 @@
+/* ===================== Quick Guides Container ===================== */
 .quickGuides {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   padding: 2rem;
+  background-color: #f5f7fa;
+ 
 }
 
+/* Section Title */
 .quickGuides h1 {
   color: #0765b7;
   margin-top: 70px;
   font-size: 40px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-/* PDF Button */
+/* ===================== PDF Download Button ===================== */
 .downloadBtn {
-  background-color: #549ddc;
+  background: linear-gradient(135deg, #549ddc, #417ac6);
   color: white;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
-  padding: 10px 30px;
-  font-size: large;
+  padding: 12px 35px;
+  font-size: 1.2rem;
   border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2), 0 0 10px rgba(84,157,220,0.4);
   transition: all 0.3s ease;
 }
 
 .downloadBtn:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  background-color: #417ac6;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 15px rgba(84,157,220,0.6);
+  background: linear-gradient(135deg, #417ac6, #0657a5);
 }
 
-/* Carousel Wrapper */
+/* ===================== Carousel Wrapper ===================== */
 .carouselWrapper {
   position: relative;
   width: 90%;
   max-width: 900px;
+  margin-top: 2rem;
 }
 
+/* Carousel Track */
 .carousel {
   display: flex;
   gap: 1rem;
@@ -50,7 +61,7 @@
   display: none;
 }
 
-/* Slides */
+/* ===================== Slides ===================== */
 .slide {
   flex: 0 0 calc((100% - 2rem) / 3);
   scroll-snap-align: center;
@@ -65,6 +76,7 @@
   opacity: 1;
 }
 
+/* Image Wrapper */
 .img {
   width: 100%;
   aspect-ratio: 3/4;
@@ -76,17 +88,23 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Updated Arrow Buttons */
+.image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* ===================== Arrow Buttons ===================== */
 .prevBtn,
 .nextBtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(135deg, #1e6fc1 0%, #549ddc 100%);
-  border: 2px solid #549ddc;
+  background: linear-gradient(135deg, #1e6fc1, #549ddc);
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   width: 60px;
@@ -96,19 +114,30 @@
   z-index: 10;
   color: white;
   font-size: 2rem;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
-  opacity: 0.9;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 10px rgba(84,157,220,0.5);
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  opacity: 0.95;
 }
 
 .prevBtn:hover,
 .nextBtn:hover {
-  transform: translateY(-50%) scale(1.2);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  transform: translateY(-50%) scale(1.2) rotate(5deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 0 15px rgba(84,157,220,0.7);
   opacity: 1;
-  background: linear-gradient(135deg, #0657a5 0%, #417ac6 100%);
-  border-color: #417ac6;
+  background: linear-gradient(135deg, #0657a5, #417ac6);
 }
 
 .prevBtn { left: -70px; }
 .nextBtn { right: -70px; }
+
+/* Optional: Soft pulse animation to highlight arrows */
+@keyframes pulse {
+  0% { box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 10px rgba(84,157,220,0.5); }
+  50% { box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px rgba(84,157,220,0.7); }
+  100% { box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 10px rgba(84,157,220,0.5); }
+}
+
+.prevBtn.pulse,
+.nextBtn.pulse {
+  animation: pulse 2s infinite;
+}
