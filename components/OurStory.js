@@ -1,5 +1,6 @@
 'use client';
 
+import { MoveRight } from "lucide-react";
 import Image from "next/image";
 
 export default function OurStory() {
@@ -28,14 +29,13 @@ export default function OurStory() {
 
           <div className="story-image">
             <Image
-              src="/images/about.png"
+              src="/images/about.jpg"
               alt="Story Illustration"
               width={500}
-              height={350}
+              height={400}
               unoptimized={true}
               style={{
-                width: "80%",
-                height: "auto",
+                marginRight:"-100px",
                 borderRadius: "16px",
                 boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
               }}
@@ -88,7 +88,6 @@ export default function OurStory() {
 
         .our-story-container {
           max-width: 1100px;
-          margin: auto;
           display: flex;
           flex-wrap: wrap;
           gap: 40px;
@@ -99,6 +98,7 @@ export default function OurStory() {
           flex: 1;
           min-width: 300px;
           color: #186cb5;
+          margin-left: 100px;
         }
 
         .story-text h1 {
@@ -110,7 +110,7 @@ export default function OurStory() {
         .story-text p {
           margin-top: 15px;
           line-height: 1.6;
-          font-size: 22px;
+          font-size: 21px;
         }
 
         .story-image {

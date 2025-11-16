@@ -8,7 +8,7 @@ export default function Vision() {
           src="/images/girl1.png"  
           alt="Doctor"
           width={400}               
-          height={400}               
+          height={500}               
           style={{ objectFit: "cover", borderRadius: "12px" }}
         />
       </div>
