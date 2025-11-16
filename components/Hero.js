@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Hero({ heading, text, headingStyle, textStyle, showButtons = false }) {
+export default function Hero({ heading, text, headingStyle, textStyle, showButtons = false, shortTextOnHome = false }) {
   const [showFullText, setShowFullText] = useState(false);
 
   // Short preview text (first 150 chars)
@@ -18,6 +18,13 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
     }
   };
 
+  // Decide what text to display
+  const displayedText = shortTextOnHome
+    ? showFullText
+      ? text
+      : previewText
+    : text; // show full text by default if not on home
+
   return (
     <section
       id="home"
@@ -32,10 +39,10 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
       {/* Hero Text Section */}
       <div className="hero-text" style={{ maxWidth: "600px" }}>
         <h1 style={headingStyle}>{heading}</h1>
-        <p style={textStyle}>{showFullText ? text : previewText}</p>
+        <p style={textStyle}>{displayedText}</p>
 
         {/* Conditionally render buttons */}
-        {showButtons && (
+        {showButtons && shortTextOnHome && (
           <div style={{ marginTop: "30px", display: "flex", gap: "20px" }}>
             {/* Primary CTA */}
             <button

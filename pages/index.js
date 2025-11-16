@@ -20,18 +20,15 @@ export default function Home() {
       <Header />
       <Hero
   heading="Start living to your fullest with LYF Suite."
-  text="LYF Suite is redefining how we care for our health — moving from reactive sick care to predictive health care.
-By combining Artificial Intelligence, biosensing technologies, and real-time connectivity, LYF Suite empowers you to monitor, understand, and improve your well-being before problems arise.
+  text="LYF Suite is redefining how we care for our health moving from reactive sick care to predictive health care.
+ By combining Artificial Intelligence, biosensing technologies, and real-time connectivity, LYF Suite empowers you to monitor, understand, and improve your well-being before problems arise.
 Experience a smarter, proactive approach to health that helps you live longer, stronger, and happier."
-  textStyle={{
-    fontSize: "1.4rem",
-    margin: "10px",
-  }}
-  headingStyle={{
-    marginTop: "150px",
-  }}
-  showButtons={true} // ✅ Only show buttons on Home page
+  textStyle={{ fontSize: "1.4rem", margin: "10px" }}
+  headingStyle={{ marginTop: "150px" }}
+  showButtons={true}
+  shortTextOnHome={true} // ✅ Only show preview text + buttons
 />
+
 
       
       <Services />

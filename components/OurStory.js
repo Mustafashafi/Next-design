@@ -151,7 +151,7 @@ export default function OurStory() {
           background: white;
           border-radius: 16px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          padding: 25px;
+          padding: 30px;
           width: 300px;
           text-align: left;
           transition: all 0.3s ease;
@@ -159,7 +159,7 @@ export default function OurStory() {
         }
 
         .value-card h2 {
-          font-size: 22px;
+          font-size: 24px;
           margin-bottom: 10px;
           color: #186cb5;
         }
@@ -167,6 +167,7 @@ export default function OurStory() {
         .value-card p {
           color: #186cb5;
           line-height: 1.5;
+          font-size:17px;
         }
 
         /* Hover Effect */
