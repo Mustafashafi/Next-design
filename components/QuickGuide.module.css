@@ -11,7 +11,7 @@
 
 /* Section Title */
 .quickGuides h1 {
-  color: #0765b7;
+  color: #186cb5;
   margin-top: 70px;
   font-size: 40px;
   text-align: center;
@@ -21,7 +21,7 @@
 
 /* ===================== PDF Download Button ===================== */
 .downloadBtn {
-  background: linear-gradient(135deg, #549ddc, #417ac6);
+  background: #186cb5;
   color: white;
   border-radius: 12px;
   cursor: pointer;
@@ -36,7 +36,7 @@
 .downloadBtn:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 15px rgba(84,157,220,0.6);
-  background: linear-gradient(135deg, #417ac6, #0657a5);
+  background:#186cb5;
 }
 
 /* ===================== Carousel Wrapper ===================== */
@@ -103,7 +103,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(135deg, #1e6fc1, #549ddc);
+  background: #186cb5;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -124,7 +124,7 @@
   transform: translateY(-50%) scale(1.2) rotate(5deg);
   box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 0 15px rgba(84,157,220,0.7);
   opacity: 1;
-  background: linear-gradient(135deg, #0657a5, #417ac6);
+  background: #186cb5;
 }
 
 .prevBtn { left: -70px; }

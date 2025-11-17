@@ -225,7 +225,7 @@ export default function Header() {
           background: #f0f8ff;
         }
         .dropdown-menu a {
-          color: #333;
+          color: #186cb5;
           text-decoration: none;
           display: block;
         }

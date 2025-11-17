@@ -49,20 +49,20 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
   onClick={handleRequestDemo}
   onMouseEnter={(e) => {
     e.target.style.backgroundColor = "#ffffff"; // white
-    e.target.style.color = "#0070f3";            // blue text
-    e.target.style.border = "2px solid #0070f3"; // blue border
+    e.target.style.color = "#186cb5";            // blue text
+    e.target.style.border = "2px solid #186cb5"; // blue border
   }}
   onMouseLeave={(e) => {
-    e.target.style.backgroundColor = "#0070f3";  // blue background
+    e.target.style.backgroundColor = "#186cb5";  // blue background
     e.target.style.color = "#ffffff";            // white text
-    e.target.style.border = "2px solid #0070f3"; // blue border
+    e.target.style.border = "2px solid #186cb5"; // blue border
   }}
   style={{
     padding: "12px 25px",
     fontSize: "1rem",
     borderRadius: "5px",
-    border: "2px solid #0070f3",
-    backgroundColor: "#0070f3",
+    border: "2px solid #186cb5",
+    backgroundColor: "#186cb5",
     color: "#fff",
     cursor: "pointer",
     transition: "0.3s ease",
@@ -76,20 +76,20 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
 <button
   onClick={handleLearnMore}
   onMouseEnter={(e) => {
-    e.target.style.backgroundColor = "#0070f3";
+    e.target.style.backgroundColor = "#186cb5";
     e.target.style.color = "#fff";
   }}
   onMouseLeave={(e) => {
     e.target.style.backgroundColor = "transparent";
-    e.target.style.color = "#0070f3";
+    e.target.style.color = "#186cb5";
   }}
   style={{
     padding: "12px 25px",
     fontSize: "1rem",
     borderRadius: "5px",
-    border: "2px solid #0070f3",
+    border: "2px solid #186cb5",
     backgroundColor: "transparent",
-    color: "#0070f3",
+    color: "#186cb5",
     cursor: "pointer",
     transition: "0.3s ease",
   }}

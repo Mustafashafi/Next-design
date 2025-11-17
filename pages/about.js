@@ -28,7 +28,7 @@ export default function About() {
 
       
       <Team />
-      <br /><br /><br />
+      
       <Chat />
       <Footer />
     </>

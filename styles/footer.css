@@ -1,23 +1,28 @@
+/* =========================
+   Footer Styles
+========================= */
 .site-footer {
-  background: url('/images/footer-bg.png') no-repeat center center / contain; 
+  background: url('/images/footer-bg.png') no-repeat center center / cover;
   color: #fff;
-  padding: 4rem 1rem;
-  height: calc(100vw * 0.536); 
+  padding: 4rem 2rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2.5rem;
-  max-width: 1300px;
-  margin-top: 200px;
-  margin-left: 200px;
   align-items: start;
+  max-width: 1200px;        /* keeps content from stretching too wide */
+  margin: 0 auto;            /* centers content */
+  padding-left: 250px;        /* consistent left spacing */
+       /* balance right spacing */
+  padding-top: 150px;         /* consistent top spacing */
 }
 
 .footer-section h4 {
-  font-size: 1.35rem; /* increased */
+  font-size: 1.35rem;
   margin-bottom: 1rem;
   color: #ffffff;
   font-weight: 600;
@@ -44,11 +49,11 @@
 }
 
 .footer-desc {
-  font-size: 1.1rem;  /* increased */
+  font-size: 1.1rem;
   color: #ffffff;
   line-height: 1.7;
   margin-bottom: 1.5rem;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .footer-links {
@@ -57,13 +62,13 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem; /* slightly increased */
+  gap: 0.8rem;
 }
 
 .footer-links a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.05rem;  /* increased */
+  font-size: 1.05rem;
   transition: all 0.3s ease;
 }
 
@@ -72,17 +77,13 @@
   transform: translateX(4px);
 }
 
-.footer-contact p {
-  color: #ffffff;
-  font-size: 1.05rem; /* increased */
-  line-height: 1.7;
-}
-
+.footer-contact p,
 .footer-contact a {
-  color: #00b4d8;
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.7;
   text-decoration: none;
-  transition: color 0.3s;
-  font-size: 1.05rem; /* increased */
+  transition: color 0.3s ease;
 }
 
 .footer-contact a:hover {
@@ -91,13 +92,13 @@
 
 .footer-socials {
   display: flex;
-  gap: 1rem; /* increased */
+  gap: 1rem;
   margin-top: 0.5rem;
 }
 
 .footer-socials a {
   color: #ffffff;
-  font-size: 1.4rem; /* increased icon size */
+  font-size: 1.4rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -109,23 +110,40 @@
 .footer-bottom {
   text-align: center;
   margin-top: 3rem;
-  font-size: 1rem; /* increased */
-  border-top: 1px solid rgba(255,255,255,0.3);
+  font-size: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   padding-top: 1rem;
   color: #ffffff;
 }
 
 .footer-bottom span {
-  
   font-weight: 600;
 }
 
+/* =========================
+   Responsive
+========================= */
+
+/* Large tablets / small desktops */
+@media (max-width: 992px) {
+  .footer-container {
+    gap: 2rem;
+  }
+}
+
+/* Tablets / landscape mobile */
 @media (max-width: 768px) {
   .footer-container {
+    grid-template-columns: 1fr; /* stack sections vertically */
     text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
   }
 
-  .footer-about, .footer-contact, .footer-links {
+  .footer-about,
+  .footer-contact,
+  .footer-links {
     align-items: center;
   }
 
@@ -135,5 +153,53 @@
 
   .footer-socials {
     justify-content: center;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .footer-section h4 {
+    font-size: 1.2rem;
+  }
+
+  .footer-desc,
+  .footer-links a,
+  .footer-contact p,
+  .footer-contact a {
+    font-size: 1rem;
+  }
+
+  .footer-socials a {
+    font-size: 1.2rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .site-footer {
+    padding: 3rem 1rem;
+  }
+
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-links a,
+  .footer-contact p,
+  .footer-contact a {
+    font-size: 0.95rem;
+  }
+
+  .footer-socials a {
+    font-size: 1rem;
+  }
+}
+
+/* Extra spacing for ultra-wide screens */
+@media (min-width: 1400px) {
+  .footer-container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 70px;
   }
 }

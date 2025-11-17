@@ -1,6 +1,5 @@
 'use client';
 
-import { color } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
@@ -98,8 +97,8 @@ export default function Testimonials() {
   if (!mounted) return null;
 
   // Inline styles
-  const sectionStyle = { textAlign: "center", padding: "80px 0", background: "#f7f9fc", color: "#1a3f70" };
-  const h1Style = { fontSize: "2.8rem", marginBottom: "50px", fontWeight: 600,color:"#025dc6f7" };
+  const sectionStyle = { textAlign: "center", padding: "80px 0", background: "#f7f9fc", color: "#186cb5" };
+  const h1Style = { fontSize: "2.8rem", marginBottom: "50px", fontWeight: 600,color:"#186cb5" };
   const carouselWrapperStyle = { position: "relative", width: "90%", maxWidth: "1000px", margin: "0 auto" };
   const carouselStyle = {
     display: "flex",
@@ -121,13 +120,13 @@ export default function Testimonials() {
     transition: "transform 0.3s, opacity 0.3s, box-shadow 0.3s",
   };
   const imgWrapperStyle = { width: "90px", height: "90px", marginBottom: "20px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 4px 15px rgba(0,0,0,0.15)" };
-  const reviewStyle = { fontStyle: "italic", marginBottom: "15px", color: "#444", lineHeight: 1.5 };
+  const reviewStyle = { fontStyle: "italic", marginBottom: "15px", color: "#186cb5", lineHeight: 1.5 };
   const arrowBtnStyle = {
     position: "absolute",
     top: "50%",
     transform: "translateY(-50%)",
-    background: "linear-gradient(135deg, #1e6fc1, #549ddc)",
-    border: "1px solid #549ddc",
+    background: "#186cb5",
+    border: "1px solid #186cb5",
     borderRadius: "50%",
     width: "60px",
     height: "60px",
@@ -164,7 +163,7 @@ export default function Testimonials() {
               </div>
               <p style={reviewStyle}>“{t.review}”</p>
               <h4 style={{ marginBottom: "5px" }}>{t.name}</h4>
-              <span style={{ color: "#666", fontSize: "0.9rem" }}>{t.role}</span>
+              <span style={{ color: "#186cb5", fontSize: "0.9rem" }}>{t.role}</span>
             </div>
           ))}
         </div>

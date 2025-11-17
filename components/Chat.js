@@ -130,7 +130,7 @@ export default function Chat() {
           position: fixed;
           bottom: 24px;
           right: 24px;
-          background: #0070f3;
+          background: #186cb5;
           color: white;
           border: none;
           padding: 16px;
@@ -162,7 +162,7 @@ export default function Chat() {
           align-items: center;
           justify-content: space-between;
           padding: 14px 16px;
-          background: linear-gradient(135deg,#0070f3,#00c6ff);
+          background: #186cb5;
           color: white;
           font-weight: bold;
         }
@@ -196,7 +196,7 @@ export default function Chat() {
           word-wrap: break-word;
           box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .user .bubble { background: #0070f3; color: white; border-bottom-right-radius: 4px; }
+        .user .bubble { background: #186cb5; color: white; border-bottom-right-radius: 4px; }
         .ai .bubble { background: #e2e8f0; color: #333; border-bottom-left-radius: 4px; }
 
         .typing { display: flex; gap: 5px; align-items: center; height: 24px; }
@@ -207,8 +207,8 @@ export default function Chat() {
         .input-box { display: flex; border-top: 1px solid #ddd; }
         input { flex: 1; padding: 14px; font-size: 15px; border: none; outline: none; }
         input:focus { background: #f1f5ff; }
-        button { background: #0070f3; color: white; border: none; padding: 0 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        button:hover { background: #005bb5; }
+        button { background: #186cb5; color: white; border: none; padding: 0 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        button:hover { background: #186cb5; }
 
         @keyframes blink { 0%,80%,100%{opacity:0.2;} 40%{opacity:1;} }
       `}</style>
