@@ -102,7 +102,7 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
       </div>
 
       {/* Hero Image Section */}
-      <div className="hero-image" style={{ maxWidth: "500px" }}>
+      <div className="hero-image" >
         {/* You can add an image here */}
       </div>
     </section>
