@@ -53,9 +53,8 @@
 .footer-logo {
   display: block;
   margin-bottom: 1rem;
-  filter: brightness(0) invert(1); /* ensures logo appears white */
+  filter: brightness(0) invert(1);
 }
-
 
 .footer-links {
   list-style: none;
