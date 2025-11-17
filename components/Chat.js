@@ -188,7 +188,7 @@ export default function Chat() {
           max-width: 75%;
           padding: 10px 14px;
           border-radius: 18px;
-          font-size: 15px;
+          font-size: 13px;
           line-height: 1.4;
         }
         .user .bubble { background: #186cb5; color: white; }
