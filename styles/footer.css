@@ -2,25 +2,27 @@
    Footer Styles
 ========================= */
 .site-footer {
-  background: url('/images/footer-bg.png') no-repeat center center;
-  background-size: cover;       /* ensures the image fully covers the footer */
+  background: url('/images/footer-bg.png') no-repeat center center / cover;
   color: #fff;
   padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
-  min-height: 400px;            /* ensures footer is tall enough for large screens */
 }
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1.5fr 1fr 1fr; /* first section wider */
   gap: 2.5rem;
   align-items: start;
-  max-width: 1400px;            /* wider for large/ultra-wide screens */
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 10rem;              /* unified horizontal padding */
-  padding-top: 150px;           /* consistent top spacing */
+  padding: 0 8rem;     /* overall padding for all sections */
+  padding-top: 150px;
+  transform: translateX(20px); /* shift all sections slightly to the right */
+}
 
+.footer-about {
+  padding-left: 4rem;   /* extra padding for first section */
 }
 
 .footer-section h4 {
@@ -41,17 +43,6 @@
   border-radius: 2px;
 }
 
-.footer-about {
-  text-align: left;
-}
-
-.footer-logo {
-  display: block;
-  margin-bottom: 1rem;
-  filter: brightness(0) saturate(100%) invert(1);
-
-}
-
 .footer-desc {
   font-size: 1.1rem;
   color: #ffffff;
@@ -59,6 +50,12 @@
   margin-bottom: 1.5rem;
   max-width: 100%;
 }
+.footer-logo {
+  display: block;
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1); /* ensures logo appears white */
+}
+
 
 .footer-links {
   list-style: none;
@@ -129,29 +126,26 @@
 ========================= */
 
 /* Large tablets / small desktops */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .footer-container {
-    gap: 2rem;
-    padding-top: 100px;
+    grid-template-columns: 1fr 1fr 1fr; /* adjust widths */
+    padding: 0 5rem;
   }
 }
 
 /* Tablets / landscape mobile */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .footer-container {
-    grid-template-columns: 1fr; /* stack sections vertically */
+    grid-template-columns: 1fr; /* stack vertically */
     text-align: center;
-    padding: 40px 20px 0 20px;
+    padding: 0 2rem;
+    padding-top: 50px;
+    transform: translateX(0); /* reset right shift on small screens */
   }
 
-  .footer-about,
-  .footer-contact,
-  .footer-links {
-    align-items: center;
-  }
-
-  .footer-desc {
-    margin: 0 auto 1.5rem;
+  .footer-about {
+    padding-left: 0;
+    margin-bottom: 2rem;
   }
 
   .footer-socials {
@@ -198,15 +192,15 @@
   }
 }
 
-/* Ultra-wide screens (27-inch+ monitors) */
-@media (min-width: 1400px) {
+/* Ultra-wide screens */
+@media (min-width: 1600px) {
   .footer-container {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 120px;
+    padding: 0 12rem;
+    padding-top: 180px;
+    gap: 3rem;
   }
 
-  .site-footer {
-    min-height: 500px;  /* taller footer so background fully displays */
+  .footer-about {
+    padding-left: 6rem;
   }
 }
