@@ -33,15 +33,33 @@ export default function Header() {
 
   const linkColor = '#186cb5';
 
-  // Scroll to section only if we are on home page
+  // -----------------------------------------------
+  // FIX #1 — Updated handleSectionClick (no design change)
+  // -----------------------------------------------
   const handleSectionClick = (sectionId) => {
     if (pathname === '/') {
       const section = document.getElementById(sectionId);
       if (section) section.scrollIntoView({ behavior: 'smooth' });
     } else {
-      router.push('/'); // just navigate to home
+      router.push(`/?scrollTo=${sectionId}`);
     }
   };
+
+  // -----------------------------------------------
+  // FIX #2 — Auto scroll after navigating to home
+  // -----------------------------------------------
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("scrollTo");
+    if (!target) return;
+
+    setTimeout(() => {
+      const section = document.getElementById(target);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  }, [pathname]);
 
   const handleProductClick = (e, productName) => {
     e.preventDefault();
@@ -99,7 +117,7 @@ export default function Header() {
               style={{ color: pathname === '/about' ? linkColor : 'inherit' }}
               onClick={(e) => {
                 e.preventDefault();
-                router.push('/about'); // navigate only
+                router.push('/about');
               }}
             >
               About
