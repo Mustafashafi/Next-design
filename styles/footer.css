@@ -1,10 +1,7 @@
-/* =========================
-   Footer Styles
-========================= */
 .site-footer {
-  background: url('/images/footer-bg.png') no-repeat center center / cover;
+  background: url('/images/footer-bg1.png') no-repeat center center ;
+  background-size: cover;
   color: #fff;
-  padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -17,7 +14,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 8rem;     /* overall padding for all sections */
-  padding-top: 150px;
+  padding-top: -10px;
   transform: translateX(20px); /* shift all sections slightly to the right */
 }
 
