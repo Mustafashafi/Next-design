@@ -45,36 +45,58 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
         {showButtons && shortTextOnHome && (
           <div style={{ marginTop: "30px", display: "flex", gap: "20px" }}>
             {/* Primary CTA */}
-            <button
-              onClick={handleRequestDemo}
-              style={{
-                padding: "12px 25px",
-                fontSize: "1rem",
-                borderRadius: "5px",
-                border: "none",
-                backgroundColor: "#0070f3",
-                color: "#fff",
-                cursor: "pointer",
-              }}
-            >
-              Request a Demo
-            </button>
+<button
+  onClick={handleRequestDemo}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = "#ffffff"; // white
+    e.target.style.color = "#0070f3";            // blue text
+    e.target.style.border = "2px solid #0070f3"; // blue border
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "#0070f3";  // blue background
+    e.target.style.color = "#ffffff";            // white text
+    e.target.style.border = "2px solid #0070f3"; // blue border
+  }}
+  style={{
+    padding: "12px 25px",
+    fontSize: "1rem",
+    borderRadius: "5px",
+    border: "2px solid #0070f3",
+    backgroundColor: "#0070f3",
+    color: "#fff",
+    cursor: "pointer",
+    transition: "0.3s ease",
+  }}
+>
+  Request a Demo
+</button>
 
-            {/* Secondary CTA */}
-            <button
-              onClick={handleLearnMore}
-              style={{
-                padding: "12px 25px",
-                fontSize: "1rem",
-                borderRadius: "5px",
-                border: "2px solid #0070f3",
-                backgroundColor: "transparent",
-                color: "#0070f3",
-                cursor: "pointer",
-              }}
-            >
-              {showFullText ? "Show Less" : "Learn More"}
-            </button>
+
+{/* Secondary CTA */}
+<button
+  onClick={handleLearnMore}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = "#0070f3";
+    e.target.style.color = "#fff";
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "transparent";
+    e.target.style.color = "#0070f3";
+  }}
+  style={{
+    padding: "12px 25px",
+    fontSize: "1rem",
+    borderRadius: "5px",
+    border: "2px solid #0070f3",
+    backgroundColor: "transparent",
+    color: "#0070f3",
+    cursor: "pointer",
+    transition: "0.3s ease",
+  }}
+>
+  {showFullText ? "Show Less" : "Learn More"}
+</button>
+
           </div>
         )}
       </div>
