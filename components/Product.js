@@ -146,20 +146,21 @@ export default function Product() {
           flex-wrap: wrap;
         }
         .tab {
-          background: #f0f0f0;
-          border: none;
+          background: #186cb5;
+          
           padding: 15px 20px;
           border-radius: 8px;
           cursor: pointer;
           transition: all 0.2s ease;
+          
         }
         .tab.active {
-          background: #186cb5;
+          background: #3ca4ffff;
           color: white;
           font-weight: 600;
         }
         .tab:hover {
-          background: #186cb5;
+          background: #3ca4ffff;
           color: white;
         }
         .muted {

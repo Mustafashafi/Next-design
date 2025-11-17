@@ -15,13 +15,7 @@ export default function Chat() {
   const scrollChat = () => {
     const chatBox = chatBoxRef.current;
     if (!chatBox) return;
-
-    if (loading) {
-      const typingBubble = chatBox.querySelector('.message.ai .bubble.typing');
-      if (typingBubble) chatBox.scrollTop = typingBubble.offsetTop;
-    } else {
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
+    chatBox.scrollTop = chatBox.scrollHeight;
   };
 
   useEffect(() => {
@@ -45,7 +39,6 @@ export default function Chat() {
 
       let botReply = '';
       const contentType = res.headers.get('content-type');
-
       if (contentType?.includes('application/json')) {
         const data = await res.json();
         botReply = data.reply ?? 'No reply from bot.';
@@ -67,8 +60,7 @@ export default function Chat() {
 
   return (
     <>
-      {/* UPDATED: button hides via CSS class and lower z-index */}
-      <button 
+      <button
         className={`chat-toggle ${open ? 'hidden' : ''}`}
         onClick={() => setOpen(true)}
       >
@@ -122,98 +114,96 @@ export default function Chat() {
       )}
 
       <style jsx>{`
-  .chat-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #186cb5;
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
+        .chat-toggle {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          background: #186cb5;
+          color: white;
+          border: none;
+          padding: 16px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 18px;
+          z-index: 500;
+          transition: transform 0.2s ease;
+        }
+        .chat-toggle.hidden { display: none !important; }
+        .chat-toggle:hover { transform: scale(1.1); }
 
-    /* FIX: lower z-index so chat always appears above */
-    z-index: 500;
+        .chat-wrapper {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          width: 90%;
+          max-width: 400px;
+          height: 400px; /* Fixed height */
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          z-index: 999;
+        }
 
-    transition: transform 0.2s ease;
-  }
+        .chat-container {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
 
-  /* FIX: forced hide */
-  .chat-toggle.hidden {
-    display: none !important;
-  }
+        .chat-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 16px;
+          background: #186cb5;
+          color: white;
+          font-weight: bold;
+        }
 
-  .chat-toggle:hover { transform: scale(1.1); }
+        .bot-avatar { font-size: 22px; }
+        .close-btn { background: transparent; border: none; color: white; cursor: pointer; }
 
-  .chat-wrapper {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 90%;
-    max-width: 400px;
-    max-height: 80vh;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+        .chat-box {
+          flex: 1;
+          padding: 16px;
+          background: #f8fafc;
+          overflow-y: auto;
 
-    /* Chat box always above toggle */
-    z-index: 999;
-  }
+          /* Scrollbar styles */
+          scrollbar-width: thin;
+          scrollbar-color: #186cb5 #e2e8f0;
+        }
+        .chat-box::-webkit-scrollbar { width: 8px; }
+        .chat-box::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 4px; }
+        .chat-box::-webkit-scrollbar-thumb { background: #186cb5; border-radius: 4px; border: 2px solid #e2e8f0; }
 
-  .chat-container { display: flex; flex-direction: column; height: 100%; }
+        .message { display: flex; margin-bottom: 10px; }
+        .message.user { justify-content: flex-end; }
+        .message.ai { justify-content: flex-start; }
 
-  .chat-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    background: #186cb5;
-    color: white;
-    font-weight: bold;
-  }
+        .bubble {
+          max-width: 75%;
+          padding: 10px 14px;
+          border-radius: 18px;
+          font-size: 15px;
+          line-height: 1.4;
+        }
+        .user .bubble { background: #186cb5; color: white; }
+        .ai .bubble { background: #e2e8f0; color: #333; }
 
-  .bot-avatar { font-size: 22px; }
-  .close-btn { background: transparent; border: none; color: white; cursor: pointer; }
+        .typing { display: flex; gap: 5px; align-items: center; }
+        .dot { width: 6px; height: 6px; background: #666; border-radius: 50%; animation: blink 1.5s infinite; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0%,80%,100%{opacity:0.2;} 40%{opacity:1;} }
 
-  .chat-box {
-    flex: 1;
-    padding: 16px;
-    background: #f8fafc;
-    overflow-y: auto;
-  }
-
-  .message { display: flex; margin-bottom: 10px; }
-  .message.user { justify-content: flex-end; }
-  .message.ai { justify-content: flex-start; }
-
-  .bubble {
-    max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 18px;
-    font-size: 15px;
-    line-height: 1.4;
-  }
-
-  .user .bubble { background: #186cb5; color: white; }
-  .ai .bubble { background: #e2e8f0; color: #333; }
-
-  .typing { display: flex; gap: 5px; align-items: center; }
-  .dot { width: 6px; height: 6px; background: #666; border-radius: 50%; animation: blink 1.5s infinite; }
-  .dot:nth-child(2) { animation-delay: 0.2s; }
-  .dot:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes blink { 0%,80%,100%{opacity:0.2;} 40%{opacity:1;} }
-
-  .input-box { display: flex; border-top: 1px solid #ddd; }
-  input { flex: 1; padding: 14px; font-size: 15px; border: none; outline: none; }
-  button { background: #186cb5; color: white; border: none; padding: 0 16px; cursor: pointer; }
-
-`}</style>
+        .input-box { display: flex; border-top: 1px solid #ddd; }
+        input { flex: 1; padding: 14px; font-size: 15px; border: none; outline: none; }
+        button { background: #186cb5; color: white; border: none; padding: 0 16px; cursor: pointer; }
+      `}</style>
     </>
   );
 }
