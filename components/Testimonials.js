@@ -120,7 +120,7 @@ export default function Testimonials() {
     transition: "transform 0.3s, opacity 0.3s, box-shadow 0.3s",
   };
   const imgWrapperStyle = { width: "90px", height: "90px", marginBottom: "20px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 4px 15px rgba(0,0,0,0.15)" };
-  const reviewStyle = { fontStyle: "italic", marginBottom: "15px", color: "#186cb5", lineHeight: 1.5 };
+  const reviewStyle = {  marginBottom: "15px", color: "#186cb5", lineHeight: 1.5 };
   const arrowBtnStyle = {
     position: "absolute",
     top: "50%",

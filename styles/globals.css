@@ -77,6 +77,10 @@ header.scrolled {
   color: white !important;
   background-color:#186cb5;
 }
+#contact ::placeholder {
+  color: #186cb5;
+  font-family: 'Noto Naskh Arabic', serif;
+}
 
 
 
@@ -485,14 +489,12 @@ header.scrolled {
 }
 
 
-.expert-text {
-  padding: 28px 28px 12px;
-}
+
 
 .expert-text h4 {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #186cb5;
+  color: #186cb5 !important;
   line-height: 1.45;
   margin-bottom: 18px;
   transition: color 0.3s ease;
