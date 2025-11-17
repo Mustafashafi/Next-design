@@ -2,11 +2,13 @@
    Footer Styles
 ========================= */
 .site-footer {
-  background: url('/images/footer-bg.png') no-repeat center center / cover;
+  background: url('/images/footer-bg.png') no-repeat center center;
+  background-size: cover;       /* ensures the image fully covers the footer */
   color: #fff;
   padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
+  min-height: 400px;            /* ensures footer is tall enough for large screens */
 }
 
 .footer-container {
@@ -14,11 +16,11 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2.5rem;
   align-items: start;
-  max-width: 1200px;        /* keeps content from stretching too wide */
-  margin: 0 auto;            /* centers content */
-  padding-left: 250px;        /* consistent left spacing */
-       /* balance right spacing */
-  padding-top: 150px;         /* consistent top spacing */
+  max-width: 1400px;            /* wider for large/ultra-wide screens */
+  margin: 0 auto;
+  padding: 0 10rem;              /* unified horizontal padding */
+  padding-top: 150px;           /* consistent top spacing */
+
 }
 
 .footer-section h4 {
@@ -128,6 +130,7 @@
 @media (max-width: 992px) {
   .footer-container {
     gap: 2rem;
+    padding-top: 100px;
   }
 }
 
@@ -136,9 +139,7 @@
   .footer-container {
     grid-template-columns: 1fr; /* stack sections vertically */
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 40px;
+    padding: 40px 20px 0 20px;
   }
 
   .footer-about,
@@ -195,11 +196,15 @@
   }
 }
 
-/* Extra spacing for ultra-wide screens */
+/* Ultra-wide screens (27-inch+ monitors) */
 @media (min-width: 1400px) {
   .footer-container {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 70px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 120px;
+  }
+
+  .site-footer {
+    min-height: 500px;  /* taller footer so background fully displays */
   }
 }
