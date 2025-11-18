@@ -199,7 +199,7 @@ export default function Chat() {
         /* UPDATED: Left spacing for AI messages */
         .ai .bubble {
           background: #e2e8f0;
-          color: #333;
+          color: #186cb5;
          
         }
 
@@ -238,6 +238,11 @@ export default function Chat() {
         .input-box { display: flex; border-top: 1px solid #ddd; }
         input { flex: 1; padding: 14px; font-size: 15px; border: none; outline: none; }
         button { background: #186cb5; color: white; border: none; padding: 0 16px; cursor: pointer; }
+        input::placeholder {
+    color: #186cb5; /* Placeholder text color */
+    opacity: 1;     /* Ensures the color shows fully */
+    font-family:'Noto Naskh Arabic', serif;
+  }
       `}</style>
     </>
   );
