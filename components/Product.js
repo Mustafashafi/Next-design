@@ -155,12 +155,12 @@ export default function Product() {
           
         }
         .tab.active {
-          background: #3ca4ffff;
+          background: #2394f7ff;
           color: white;
           font-weight: 600;
         }
         .tab:hover {
-          background: #3ca4ffff;
+          background: #2394f7ff;
           color: white;
         }
         .muted {

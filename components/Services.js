@@ -43,7 +43,7 @@ export default function Services() {
     <section id="services" className="services">
       <div className="service-header text-center">
         <h1>Services For Your Health</h1>
-        <p>Service we provide for you with the following information — pick your best option</p>
+        <p style={{color:"white"}}>Service we provide for you with the following information — pick your best option</p>
         <button className="book-btn" onClick={handleScrollToContact}>
           Book an Appointment
         </button>

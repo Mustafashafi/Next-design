@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Send, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 export default function Chat() {
   const [messages, setMessages] = useState([
@@ -31,7 +32,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n5.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n6.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -81,7 +82,13 @@ export default function Chat() {
             <div className="chat-box" ref={chatBoxRef}>
               {messages.map((msg, idx) => (
                 <div key={idx} className={`message ${msg.sender === 'AI' ? 'ai' : 'user'}`}>
-                  <div className="bubble">{msg.text}</div>
+                  <div className="bubble">
+                    {msg.sender === 'AI' ? (
+                      <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    ) : (
+                      msg.text
+                    )}
+                  </div>
                 </div>
               ))}
 
@@ -137,7 +144,7 @@ export default function Chat() {
           right: 24px;
           width: 90%;
           max-width: 400px;
-          height: 400px; /* Fixed height */
+          height: 400px;
           background: white;
           border-radius: 16px;
           box-shadow: 0 12px 24px rgba(0,0,0,0.15);
@@ -147,11 +154,7 @@ export default function Chat() {
           z-index: 999;
         }
 
-        .chat-container {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
+        .chat-container { display: flex; flex-direction: column; height: 100%; }
 
         .chat-header {
           display: flex;
@@ -171,8 +174,6 @@ export default function Chat() {
           padding: 16px;
           background: #f8fafc;
           overflow-y: auto;
-
-          /* Scrollbar styles */
           scrollbar-width: thin;
           scrollbar-color: #186cb5 #e2e8f0;
         }
@@ -185,14 +186,48 @@ export default function Chat() {
         .message.ai { justify-content: flex-start; }
 
         .bubble {
-          max-width: 75%;
-          padding: 10px 14px;
+          max-width: 90%;
+          padding: 10px;
+          padding-left:20px;
           border-radius: 18px;
           font-size: 13px;
           line-height: 1.4;
+          white-space: pre-wrap;
         }
         .user .bubble { background: #186cb5; color: white; }
-        .ai .bubble { background: #e2e8f0; color: #333; }
+
+        /* UPDATED: Left spacing for AI messages */
+        .ai .bubble {
+          background: #e2e8f0;
+          color: #333;
+         
+        }
+
+        /* UPDATED: Remove extra space under headings */
+        .bubble h1,
+        .bubble h2,
+        .bubble h3,
+        .bubble h4,
+        .bubble h5,
+        .bubble h6 {
+          margin: 0 0 4px 0 !important;
+          padding: 0;
+          line-height: 1.1;
+          font-weight: bold;
+        }
+
+        .bubble p {
+          margin: 0.2em 0;
+        }
+
+        .bubble ul,
+        .bubble ol {
+          margin: 0.2em 0 0.2em 1.2em;
+        }
+
+        .bubble li {
+          margin: 0.1em 0;
+        }
 
         .typing { display: flex; gap: 5px; align-items: center; }
         .dot { width: 6px; height: 6px; background: #666; border-radius: 50%; animation: blink 1.5s infinite; }
