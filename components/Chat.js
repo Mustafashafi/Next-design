@@ -171,7 +171,7 @@ export default function Chat() {
 
         .chat-box {
           flex: 1;
-          padding: 16px;
+          padding: 10px;
           background: #f8fafc;
           overflow-y: auto;
           scrollbar-width: thin;
