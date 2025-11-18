@@ -32,7 +32,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n6.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n7.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
