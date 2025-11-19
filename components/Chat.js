@@ -292,7 +292,7 @@ export default function Chat() {
         input:focus { box-shadow: 0 6px 18px rgba(24,108,181,0.08); border-color: rgba(24,108,181,0.2); }
         button { background: var(--primary); color: white; border: none; width: 44px; height: 44px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
         button:disabled { opacity: 0.6; cursor: default; }
-        input::placeholder { color: var(--muted); opacity: 1; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+        input::placeholder { color: #186cb5; opacity: 1; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
 
         /* small adjustments for very small screens */
         @media (max-width: 420px) {
