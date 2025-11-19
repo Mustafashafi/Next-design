@@ -123,7 +123,7 @@ export default function Chat() {
       <style jsx>{`
         /* Theme variables scoped to the component */
         .chat-wrapper {
-          --primary: #0b73ff;
+          --primary: #186cb5;
           --ai-bg: #eef6fb;
           --user-bg: var(--primary);
           --muted: #6b7280;
@@ -134,7 +134,7 @@ export default function Chat() {
           position: fixed;
           bottom: 24px;
           right: 24px;
-          background: #0b73ff;
+          background: #186cb5;
           color: white;
           border: none;
           width: 60px;
