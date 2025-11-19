@@ -242,7 +242,7 @@ export default function Chat() {
           color: var(--primary);
           border-radius: 18px 18px 18px 6px;
           align-self: flex-start;
-          padding-left:20px;
+          padding-left:22px;
         }
 
         .bubble h1,
