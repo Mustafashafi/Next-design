@@ -12,6 +12,8 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const chatBoxRef = useRef(null);
+  const inputRef = useRef(null);
+  const [editingIndex, setEditingIndex] = useState(null);
 
   const scrollChat = () => {
     const chatBox = chatBoxRef.current;
@@ -26,13 +28,25 @@ export default function Chat() {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = { sender: 'You', text: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
     setLoading(true);
 
+    // If editing a previous user message, remove subsequent messages and replace that message
+    if (editingIndex !== null && Number.isInteger(editingIndex)) {
+      setMessages(prev => {
+        const before = prev.slice(0, editingIndex); // messages before edited one
+        return [...before, { sender: 'You', text: input }];
+      });
+      setEditingIndex(null);
+    } else {
+      const userMessage = { sender: 'You', text: input };
+      setMessages(prev => [...prev, userMessage]);
+    }
+
+    // clear input immediately for UX
+    setInput('');
+
     try {
-      const res = await fetch('https://mustafan8n12.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n13.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -135,6 +149,28 @@ export default function Chat() {
                       msg.text
                     )}
                   </div>
+
+                  {msg.sender !== 'AI' && (
+                    <div
+                      className="edit-link"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => {
+                        setEditingIndex(idx);
+                        setInput(msg.text);
+                        setTimeout(() => inputRef.current?.focus(), 50);
+                      }}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setEditingIndex(idx); setInput(msg.text); setTimeout(() => inputRef.current?.focus(), 50); } }}
+                      aria-label={`Edit message ${idx}`}
+                    >
+                      <span className="edit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+                          <path d="M3 21v-3.75L16.06 1.19a1.5 1.5 0 012.12 0l1.63 1.63a1.5 1.5 0 010 2.12L6.75 21H3z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M14 4l6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </div>
+                  )}
                 </div>
               ))}
 
@@ -151,16 +187,38 @@ export default function Chat() {
 
             <div className="input-box">
               <input
+                ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Type your message..."
                 disabled={loading}
+                aria-label="Chat input"
               />
-              <button onClick={handleSend} disabled={loading}>
-                <Send size={18} />
-              </button>
+
+              {editingIndex !== null ? (
+                <>
+                  <button
+                    className="cancel-btn"
+                    onClick={() => {
+                      setEditingIndex(null);
+                      setInput('');
+                    }}
+                    disabled={loading}
+                    aria-label="Cancel edit"
+                  >
+                    Cancel
+                  </button>
+                  <button onClick={handleSend} disabled={loading} aria-label="Send edited message">
+                    <Send size={18} />
+                  </button>
+                </>
+              ) : (
+                <button onClick={handleSend} disabled={loading} aria-label="Send message">
+                  <Send size={18} />
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -260,9 +318,9 @@ export default function Chat() {
         .chat-box::-webkit-scrollbar-track { background: #e9f0f7; border-radius: 6px; }
         .chat-box::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #1e73b8, #155f9f); border-radius: 6px; border: 2px solid #e9f0f7; }
 
-        .message { display: flex; margin: 0; }
-        .message.user { justify-content: flex-end; }
-        .message.ai { justify-content: flex-start; }
+        .message { display: flex; margin: 0; flex-direction: column; }
+        .message.user { align-items: flex-end; }
+        .message.ai { align-items: flex-start; }
 
         .bubble {
           max-width: 90%;
@@ -326,6 +384,46 @@ export default function Chat() {
 
         /* Make the marker more visible and aligned */
         .bubble li::marker { color: var(--primary); font-weight: 700; font-size: 1em; }
+
+        .edit-link {
+          font-size: 12px;
+          color: var(--primary);
+          cursor: pointer;
+          margin-top: 6px;
+          margin-right: 4px;
+          user-select: none;
+          padding: 4px 8px;
+          border-radius: 6px;
+          background: transparent;
+          transition: transform 140ms cubic-bezier(.2,.9,.2,1), box-shadow 140ms ease, background 140ms ease, opacity 160ms ease;
+          opacity: 0; /* hidden by default */
+          transform: translateY(0);
+        }
+
+        /* Reveal on hover or when message receives focus (keyboard users) */
+        .message.user:hover .edit-link,
+        .message.user:focus-within .edit-link,
+        .edit-link:focus {
+          opacity: 1;
+          transform: translateY(-3px);
+          background: rgba(24,108,181,0.06);
+          box-shadow: 0 6px 18px rgba(24,108,181,0.08);
+        }
+
+        .edit-link:active {
+          transform: translateY(-1px) scale(0.995);
+          box-shadow: 0 4px 10px rgba(24,108,181,0.06);
+        }
+
+        .cancel-btn {
+          background: transparent;
+          color: var(--primary);
+          border: 1px solid rgba(24,108,181,0.12);
+          padding: 8px 12px;
+          border-radius: 999px;
+          margin-right: 6px;
+          cursor: pointer;
+        }
 
         .typing { display: flex; gap: 6px; align-items: center; }
         .dot { width: 7px; height: 7px; background: #9aa6b2; border-radius: 50%; animation: blink 1.4s infinite; }
