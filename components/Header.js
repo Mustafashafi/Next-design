@@ -12,64 +12,63 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('home');
   const [showProducts, setShowProducts] = useState(false);
 
+  // Scroll listener using getBoundingClientRect for accurate detection
   useEffect(() => {
     const sectionIds = ['services', 'expertise', 'products', 'contact'];
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
       let foundSection = 'home';
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
+      for (let i = 0; i < sectionIds.length; i++) {
         const section = document.getElementById(sectionIds[i]);
-        if (section && scrollPosition >= section.offsetTop) {
-          foundSection = sectionIds[i];
-          break;
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 90 && rect.bottom > 90) { // 90px = header height offset
+            foundSection = sectionIds[i];
+            break;
+          }
         }
       }
       setActiveSection(foundSection);
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll); // recalc on resize
+    handleScroll(); // initialize on mount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const linkColor = 'white';
 
-  // --------------------------
-  // Scroll with header offset
-  // --------------------------
   const handleSectionClick = (sectionId) => {
-    const headerOffset = 80; // Adjust this to your header height
+    const headerOffset = 80; // header height
     if (pathname === '/') {
       const section = document.getElementById(sectionId);
       if (section) {
         const elementPosition = section.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - headerOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
     } else {
       router.push(`/?scrollTo=${sectionId}`);
     }
   };
 
-  // --------------------------
-  // Scroll on page load if query param exists
-  // --------------------------
   useEffect(() => {
     if (pathname !== "/") return;
-
     const params = new URLSearchParams(window.location.search);
     const target = params.get("scrollTo");
     if (!target) return;
-
     setTimeout(() => handleSectionClick(target), 300);
   }, [pathname]);
 
   const handleProductClick = (e, productName) => {
     e.preventDefault();
     setShowProducts(false);
-
     if (pathname === '/') {
       window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
       handleSectionClick("products");
@@ -106,11 +105,8 @@ export default function Header() {
           <li>
             <Link
               href="/"
-              style={{ color: activeSection === 'home' && pathname === '/' ? linkColor : 'inherit' }}
-              onClick={(e) => {
-                e.preventDefault();
-                router.push('/');
-              }}
+              onClick={(e) => { e.preventDefault(); router.push('/'); }}
+              className={activeSection === 'home' && pathname === '/' ? 'active' : ''}
             >
               Home
             </Link>
@@ -119,11 +115,8 @@ export default function Header() {
           <li>
             <Link
               href="/about"
-              style={{ color: pathname === '/about' ? linkColor : 'inherit' }}
-              onClick={(e) => {
-                e.preventDefault();
-                router.push('/about');
-              }}
+              onClick={(e) => { e.preventDefault(); router.push('/about'); }}
+              className={pathname === '/about' ? 'active' : ''}
             >
               About
             </Link>
@@ -154,7 +147,7 @@ export default function Header() {
               href="/#services"
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('services'); }}
-              style={{ color: activeSection === 'services' && pathname === '/' ? linkColor : 'inherit' }}
+              className={activeSection === 'services' && pathname === '/' ? 'active' : ''}
             >
               Services
             </Link>
@@ -165,7 +158,7 @@ export default function Header() {
               href="/#expertise"
               scroll={false}
               onClick={(e) => { e.preventDefault(); handleSectionClick('expertise'); }}
-              style={{ color: activeSection === 'expertise' && pathname === '/' ? linkColor : 'inherit' }}
+              className={activeSection === 'expertise' && pathname === '/' ? 'active' : ''}
             >
               Expertise
             </Link>
@@ -175,14 +168,12 @@ export default function Header() {
             <Link
               href="/#contact"
               scroll={false}
-              className="contactus"
               onClick={(e) => { e.preventDefault(); handleSectionClick('contact'); }}
-              style={{ color: activeSection === 'contact' && pathname === '/' ? linkColor : 'inherit' }}
+              className={activeSection === 'contact' && pathname === '/' ? 'active' : ''}
             >
               Contact Us
             </Link>
           </li>
-
         </ul>
       </nav>
 
@@ -234,6 +225,16 @@ export default function Header() {
           color: #186cb5;
           text-decoration: none;
           display: block;
+        }
+
+        /* Active link underline with smooth transition */
+        .nav-links li a {
+          transition: border-bottom 0.3s ease;
+        }
+        .nav-links li a.active {
+          color: white;
+          border-bottom: 2px solid white;
+          padding-bottom: 2px;
         }
       `}</style>
     </header>
