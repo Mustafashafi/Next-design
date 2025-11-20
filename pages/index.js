@@ -52,8 +52,8 @@ Experience a smarter, proactive approach to health that helps you live longer, s
         title="Respire LYF Quick Guide"
         pdf="/Respire-LYF-Broucher.pdf"
         images={[
-          "/respire-1.png",
           "/respire-2.png",
+          "/respire-1.png",
           "/respire-3.png",
           "/respire-4.png",
           "/respire-3.png"
