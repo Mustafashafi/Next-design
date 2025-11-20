@@ -33,11 +33,20 @@ export default function Services() {
   ];
 
   const handleScrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const headerOffset = 80; // same offset you used in Header.js
+
+  const section = document.getElementById("contact");
+  if (section) {
+    const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
+
 
   return (
     <section id="services" className="services">

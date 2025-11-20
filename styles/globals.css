@@ -64,23 +64,24 @@ header.scrolled {
   color: black;
   font-weight: 500;
 }
-
-.contact-link {
-  color: #186cb5 !important;
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(24,108,181,0.4);
-  padding: 8px 15px;
-  border-radius: 6px;
+.contactus {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #186cb5, #3fa0f1);
+  color: #fff !important;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
-.contact-link:hover{
-  color: white !important;
-  background-color:#186cb5;
+
+.contactus:hover {
+  transform: translateY(-3px) scale(1.05); /* lift and slight zoom */
+  background: linear-gradient(135deg, #3fa0f1, #186cb5);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 12px rgba(63, 160, 241, 0.5); /* glow + deeper shadow */
 }
-#contact ::placeholder {
-  color: #186cb5;
-  font-family: 'Noto Naskh Arabic', serif;
-}
+
 
 
 

@@ -33,21 +33,29 @@ export default function Header() {
 
   const linkColor = '#186cb5';
 
-  // -----------------------------------------------
-  // FIX #1 — Updated handleSectionClick (no design change)
-  // -----------------------------------------------
+  // --------------------------
+  // Scroll with header offset
+  // --------------------------
   const handleSectionClick = (sectionId) => {
+    const headerOffset = 80; // Adjust this to your header height
     if (pathname === '/') {
       const section = document.getElementById(sectionId);
-      if (section) section.scrollIntoView({ behavior: 'smooth' });
+      if (section) {
+        const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     } else {
       router.push(`/?scrollTo=${sectionId}`);
     }
   };
 
-  // -----------------------------------------------
-  // FIX #2 — Auto scroll after navigating to home
-  // -----------------------------------------------
+  // --------------------------
+  // Scroll on page load if query param exists
+  // --------------------------
   useEffect(() => {
     if (pathname !== "/") return;
 
@@ -55,10 +63,7 @@ export default function Header() {
     const target = params.get("scrollTo");
     if (!target) return;
 
-    setTimeout(() => {
-      const section = document.getElementById(target);
-      section?.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+    setTimeout(() => handleSectionClick(target), 300);
   }, [pathname]);
 
   const handleProductClick = (e, productName) => {
@@ -67,7 +72,7 @@ export default function Header() {
 
     if (pathname === '/') {
       window.dispatchEvent(new CustomEvent("selectProduct", { detail: productName }));
-      document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+      handleSectionClick("products");
     } else {
       const encoded = encodeURIComponent(productName);
       router.push(`/?selectedProduct=${encoded}#products`);
@@ -170,13 +175,14 @@ export default function Header() {
             <Link
               href="/#contact"
               scroll={false}
+              className="contactus"
               onClick={(e) => { e.preventDefault(); handleSectionClick('contact'); }}
-              className="contact-link"
               style={{ color: activeSection === 'contact' && pathname === '/' ? linkColor : 'inherit' }}
             >
               Contact Us
             </Link>
           </li>
+
         </ul>
       </nav>
 
