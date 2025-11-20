@@ -32,7 +32,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n10.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n11.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -47,7 +47,46 @@ export default function Chat() {
         botReply = await res.text();
       }
 
-      setMessages(prev => [...prev, { sender: 'AI', text: botReply }]);
+      // normalize list markers that were accidentally split across lines
+      const normalizeReply = (text) => {
+        if (!text) return text;
+        // unify newlines
+        text = text.replace(/\r\n/g, '\n');
+
+        const lines = text.split('\n');
+        const out = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          // If line is only a list marker like "1.", "1)", "-", "*", "+" (possibly with surrounding spaces)
+          if (/^\s*(?:\d+[\.|\)]|[-*+])\s*$/.test(line)) {
+            // find next non-empty line
+            let j = i + 1;
+            while (j < lines.length && lines[j].trim() === '') j++;
+            if (j < lines.length) {
+              // merge marker with following line
+              lines[j] = line.trim() + ' ' + lines[j].trim();
+              // skip pushing the marker-only line
+              continue;
+            } else {
+              out.push(line);
+            }
+          } else {
+            // handle cases where marker and text are split by a single newline without being marker-only
+            // e.g. "1.\nMicrosoft" (no blank line) — merge when previous line ends with marker and next line starts with capitalized word
+            if (out.length > 0 && /(?:\d+[\.|\)]|[-*+])\s*$/.test(out[out.length - 1]) && line.trim() !== '') {
+              out[out.length - 1] = out[out.length - 1].trim() + ' ' + line.trim();
+            } else {
+              out.push(line);
+            }
+          }
+        }
+
+        return out.join('\n');
+      };
+
+      const formatted = normalizeReply(botReply);
+      setMessages(prev => [...prev, { sender: 'AI', text: formatted }]);
     } catch {
       setMessages(prev => [...prev, { sender: 'AI', text: 'Error connecting to AI agent.' }]);
     } finally {
@@ -289,7 +328,7 @@ export default function Chat() {
 
         .input-box { display: flex; gap: 8px; padding: 10px; border-top: 1px solid rgba(15,23,42,0.04); background: #fff; }
         input { flex: 1; padding: 10px 14px; font-size: 14px; border: 1px solid rgba(24, 108, 181, 0.42); border-radius: 999px; outline: none; background: #f6fbff; }
-        input:focus { box-shadow: 0 6px 18px rgba(24,108,181,0.08); border-color: rgba(24,108,181,0.2); }
+        input:focus { box-shadow: 0 6px 18px rgba(24,108,181,0.08); border-color: #186cb5; color:#186cb5; }
         button { background: var(--primary); color: white; border: none; width: 44px; height: 44px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
         button:disabled { opacity: 0.6; cursor: default; }
         input::placeholder { color: #186cb5; opacity: 1; font-family: 'Noto Naskh Arabic', serif; }
