@@ -53,36 +53,21 @@ export default function Chat() {
         // unify newlines
         text = text.replace(/\r\n/g, '\n');
 
-        const lines = text.split('\n');
-        const out = [];
+        // If a list marker (numbered or bullet) appears alone on a line
+        // followed immediately by the item on the next line, join them:
+        // "1.\nMicrosoft"  -> "1. Microsoft"
+        // "-\nitem"        -> "- item"
+        text = text.replace(/(^|\n)(\s*\d+[\.\)]\s*)\n\s*/g, '$1$2 ');
+        text = text.replace(/(^|\n)(\s*[-*+]\s*)\n\s*/g, '$1$2 ');
 
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i];
-          // If line is only a list marker like "1.", "1)", "-", "*", "+" (possibly with surrounding spaces)
-          if (/^\s*(?:\d+[\.|\)]|[-*+])\s*$/.test(line)) {
-            // find next non-empty line
-            let j = i + 1;
-            while (j < lines.length && lines[j].trim() === '') j++;
-            if (j < lines.length) {
-              // merge marker with following line
-              lines[j] = line.trim() + ' ' + lines[j].trim();
-              // skip pushing the marker-only line
-              continue;
-            } else {
-              out.push(line);
-            }
-          } else {
-            // handle cases where marker and text are split by a single newline without being marker-only
-            // e.g. "1.\nMicrosoft" (no blank line) — merge when previous line ends with marker and next line starts with capitalized word
-            if (out.length > 0 && /(?:\d+[\.|\)]|[-*+])\s*$/.test(out[out.length - 1]) && line.trim() !== '') {
-              out[out.length - 1] = out[out.length - 1].trim() + ' ' + line.trim();
-            } else {
-              out.push(line);
-            }
-          }
-        }
+        // Also handle cases where a marker was produced then an empty line and text:
+        // merge marker-only lines with the next non-empty line
+        text = text.replace(/(^|\n)\s*(\d+[\.\)]|[-*+])\s*\n\s*([^\n])/g, '$1$2 $3');
 
-        return out.join('\n');
+        // collapse accidental double spaces introduced by replacements
+        text = text.replace(/ {2,}/g, ' ');
+
+        return text;
       };
 
       const formatted = normalizeReply(botReply);
