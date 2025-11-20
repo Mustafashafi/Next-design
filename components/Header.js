@@ -31,7 +31,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const linkColor = '#186cb5';
+  const linkColor = 'white';
 
   // --------------------------
   // Scroll with header offset
