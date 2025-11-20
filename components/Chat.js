@@ -56,33 +56,40 @@ export default function Chat() {
         const lines = text.split('\n');
         const out = [];
 
+        const isMarkerOnly = (ln) => /^\s*(?:\d+[\.|\)]|[-*+])\s*$/.test(ln);
+
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i];
-          // If line is only a list marker like "1.", "1)", "-", "*", "+" (possibly with surrounding spaces)
-          if (/^\s*(?:\d+[\.|\)]|[-*+])\s*$/.test(line)) {
+
+          if (isMarkerOnly(line)) {
             // find next non-empty line
             let j = i + 1;
             while (j < lines.length && lines[j].trim() === '') j++;
             if (j < lines.length) {
-              // merge marker with following line
-              lines[j] = line.trim() + ' ' + lines[j].trim();
-              // skip pushing the marker-only line
+              // place merged marker+content in output and skip the content line
+              out.push(line.trim() + ' ' + lines[j].trim());
+              i = j; // advance past the content line
               continue;
             } else {
-              out.push(line);
+              out.push(line.trim());
+              continue;
             }
+          }
+
+          // If the last output line ends with a marker and current line is the content, merge them
+          const prev = out.length ? out[out.length - 1] : null;
+          if (prev && /(?:\d+[\.|\)]|[-*+])\s*$/.test(prev) && line.trim() !== '') {
+            out[out.length - 1] = prev.trim() + ' ' + line.trim();
           } else {
-            // handle cases where marker and text are split by a single newline without being marker-only
-            // e.g. "1.\nMicrosoft" (no blank line) — merge when previous line ends with marker and next line starts with capitalized word
-            if (out.length > 0 && /(?:\d+[\.|\)]|[-*+])\s*$/.test(out[out.length - 1]) && line.trim() !== '') {
-              out[out.length - 1] = out[out.length - 1].trim() + ' ' + line.trim();
-            } else {
-              out.push(line);
-            }
+            out.push(line);
           }
         }
 
-        return out.join('\n');
+        // remove leading/trailing blank lines and collapse multiple blank lines to a single blank line
+        let result = out.join('\n');
+        result = result.replace(/(^\s+|\s+$)/g, '');
+        result = result.replace(/\n{3,}/g, '\n\n');
+        return result;
       };
 
       const formatted = normalizeReply(botReply);
