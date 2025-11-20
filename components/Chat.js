@@ -32,7 +32,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n11.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n12.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -53,18 +53,36 @@ export default function Chat() {
         // unify newlines
         text = text.replace(/\r\n/g, '\n');
 
-        
-        text = text.replace(/(^|\n)(\s*\d+[\.\)]\s*)\n\s*/g, '$1$2 ');
-        text = text.replace(/(^|\n)(\s*[-*+]\s*)\n\s*/g, '$1$2 ');
+        const lines = text.split('\n');
+        const out = [];
 
-        // Also handle cases where a marker was produced then an empty line and text:
-        // merge marker-only lines with the next non-empty line
-        text = text.replace(/(^|\n)\s*(\d+[\.\)]|[-*+])\s*\n\s*([^\n])/g, '$1$2 $3');
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          // If line is only a list marker like "1.", "1)", "-", "*", "+" (possibly with surrounding spaces)
+          if (/^\s*(?:\d+[\.|\)]|[-*+])\s*$/.test(line)) {
+            // find next non-empty line
+            let j = i + 1;
+            while (j < lines.length && lines[j].trim() === '') j++;
+            if (j < lines.length) {
+              // merge marker with following line
+              lines[j] = line.trim() + ' ' + lines[j].trim();
+              // skip pushing the marker-only line
+              continue;
+            } else {
+              out.push(line);
+            }
+          } else {
+            // handle cases where marker and text are split by a single newline without being marker-only
+            // e.g. "1.\nMicrosoft" (no blank line) — merge when previous line ends with marker and next line starts with capitalized word
+            if (out.length > 0 && /(?:\d+[\.|\)]|[-*+])\s*$/.test(out[out.length - 1]) && line.trim() !== '') {
+              out[out.length - 1] = out[out.length - 1].trim() + ' ' + line.trim();
+            } else {
+              out.push(line);
+            }
+          }
+        }
 
-        // collapse accidental double spaces introduced by replacements
-        text = text.replace(/ {2,}/g, ' ');
-
-        return text;
+        return out.join('\n');
       };
 
       const formatted = normalizeReply(botReply);
