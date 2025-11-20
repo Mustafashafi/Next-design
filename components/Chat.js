@@ -32,11 +32,38 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://mustafan8n11.app.n8n.cloud/webhook/chat', {
+      // Try primary endpoint first, then fallback to secondary if unavailable
+      const endpoints = [
+        'https://mustafan8n11.app.n8n.cloud/webhook/chat',
+        'https://mustafan8n12.app.n8n.cloud/webhook/chat',
+      ];
+
+      const fetchWithFallback = async (urls, options = {}, perRequestTimeout = 8000) => {
+        let lastErr = null;
+        for (const url of urls) {
+          try {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), perRequestTimeout);
+            const res = await fetch(url, { ...options, signal: controller.signal });
+            clearTimeout(id);
+            if (!res.ok) {
+              lastErr = new Error(`Request to ${url} failed with ${res.status}`);
+              continue; // try next
+            }
+            return res;
+          } catch (err) {
+            lastErr = err;
+            // try next endpoint
+          }
+        }
+        throw lastErr;
+      };
+
+      const res = await fetchWithFallback(endpoints, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
-      });
+      }, 8000);
 
       let botReply = '';
       const contentType = res.headers.get('content-type');
