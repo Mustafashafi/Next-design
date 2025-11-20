@@ -122,11 +122,21 @@ export default function Chat() {
   return (
     <>
       <button
-        className={`chat-toggle ${open ? 'hidden' : ''}`}
-        onClick={() => setOpen(true)}
-      >
-        🤖
-      </button>
+  className={`chat-toggle ${open ? 'hidden' : ''}`}
+  onClick={() => {
+    // Reset when opening
+    setMessages([
+      { sender: 'AI', text: 'Hi! I’m your AI Assistant. How can I help you today?' }
+    ]);
+    setInput('');
+    setLoading(false);
+    setEditingIndex(null);
+    setOpen(true);
+  }}
+>
+  🤖
+</button>
+
 
       {open && (
         <div className="chat-wrapper">
