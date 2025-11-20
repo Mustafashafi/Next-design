@@ -895,7 +895,8 @@ color: #186cb5;
         .contact-form textarea::placeholder {
           color: #186cb5;
           font-family: 'Noto Naskh Arabic', serif;
-          font-size: 14px;
+          font-size: 13px;
+          font-weight: bold;
  }
 
 .form-row {
@@ -934,10 +935,10 @@ textarea {
 .btn-submit {
   background: #186cb5;
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
-  padding: 16px 40px;
+  padding: 10px 30px;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -946,6 +947,7 @@ textarea {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  font-family:'Noto Naskh Arabic', serif;
 }
 
 .btn-submit:hover {
