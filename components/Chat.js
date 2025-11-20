@@ -53,10 +53,7 @@ export default function Chat() {
         // unify newlines
         text = text.replace(/\r\n/g, '\n');
 
-        // If a list marker (numbered or bullet) appears alone on a line
-        // followed immediately by the item on the next line, join them:
-        // "1.\nMicrosoft"  -> "1. Microsoft"
-        // "-\nitem"        -> "- item"
+        
         text = text.replace(/(^|\n)(\s*\d+[\.\)]\s*)\n\s*/g, '$1$2 ');
         text = text.replace(/(^|\n)(\s*[-*+]\s*)\n\s*/g, '$1$2 ');
 
