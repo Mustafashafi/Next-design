@@ -58,7 +58,7 @@ header.scrolled {
   list-style: none;
   display: flex;
   gap: 40px;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border: none;
   border-radius: 12px;
   background: linear-gradient(135deg, #186cb5, #3fa0f1);
@@ -68,22 +68,19 @@ header.scrolled {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
- .nav-links li a.active {
- color: white;
-  border-bottom: 2px solid white;
-border-radius: 5px;
-}
 .nav-links a {
   text-decoration: none;
   color: white;
-  font-weight: 500;
+  
 }
-
-
-
  .nav-links li a {
           transition: border-bottom 0.3s ease;
         }
+ .nav-links li a.active {
+ color: white;
+  border-bottom: 4px dotted white;
+
+}
 
 
 .hero {
