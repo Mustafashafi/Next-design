@@ -52,8 +52,6 @@ header.scrolled {
   font-size: 22px;
   color: #186cb5;
 }
-
-
 .nav-links {
   list-style: none;
   display: flex;
@@ -74,8 +72,8 @@ header.scrolled {
   
 }
  .nav-links li a {
-          transition: border-bottom 0.3s ease;
-        }
+  transition: border-bottom 0.3s ease;
+}
  .nav-links li a.active {
  color: white;
   border-bottom: 4px dotted white;
