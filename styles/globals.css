@@ -52,13 +52,8 @@ header.scrolled {
   font-size: 22px;
   color: #186cb5;
 }
-/* Active link underline */
-        .nav-links li a.active {
-          color: white;
-          border-bottom: 2px solid white;
-          border-radius: 5px;
-          
-        }
+
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -73,7 +68,11 @@ header.scrolled {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
-
+ .nav-links li a.active {
+ color: white;
+  border-bottom: 2px solid white;
+border-radius: 5px;
+}
 .nav-links a {
   text-decoration: none;
   color: white;
@@ -81,6 +80,10 @@ header.scrolled {
 }
 
 
+
+ .nav-links li a {
+          transition: border-bottom 0.3s ease;
+        }
 
 
 .hero {

@@ -227,15 +227,9 @@ export default function Header() {
           display: block;
         }
 
-        /* Active link underline with smooth transition */
-        .nav-links li a {
-          transition: border-bottom 0.3s ease;
-        }
-        .nav-links li a.active {
-          color: white;
-          border-bottom: 2px solid white;
-          padding-bottom: 2px;
-        }
+       
+       
+        
       `}</style>
     </header>
   );
