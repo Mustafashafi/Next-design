@@ -428,10 +428,10 @@ export default function Chat() {
         .cancel-btn {
           background: transparent;
           color: var(--primary);
-          border: 1px solid rgba(24,108,181,0.12);
+          
+           font-family: 'Noto Naskh Arabic', serif;
           padding: 8px 12px;
-          border-radius: 999px;
-          margin-right: 6px;
+          border-radius: 7px;
           cursor: pointer;
         }
 
