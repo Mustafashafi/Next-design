@@ -11,12 +11,20 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
   };
 
   const handleRequestDemo = () => {
-    // Scroll smoothly to contact section
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const contactSection = document.getElementById("contact");
+  const headerOffset = 100; // height of your header in px
+
+  if (contactSection) {
+    const elementPosition = contactSection.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
+
 
   // Decide what text to display
   const displayedText = shortTextOnHome
