@@ -16,10 +16,19 @@ export default function Chat() {
   const [editingIndex, setEditingIndex] = useState(null);
 
   const scrollChat = () => {
-    const chatBox = chatBoxRef.current;
-    if (!chatBox) return;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  };
+  const chatBox = chatBoxRef.current;
+  if (!chatBox) return;
+
+  // Get all AI messages
+  const aiMessages = chatBox.querySelectorAll(".message.ai");
+
+  if (aiMessages.length > 0) {
+    // Scroll to the TOP of the last AI message
+    const lastAI = aiMessages[aiMessages.length - 1];
+    chatBox.scrollTop = lastAI.offsetTop - 8; // small padding
+  }
+};
+
 
   useEffect(() => {
     scrollChat();
