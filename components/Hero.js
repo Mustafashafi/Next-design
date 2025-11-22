@@ -9,20 +9,20 @@ export default function Hero({ heading, text, headingStyle, textStyle, showButto
     setShowFullText(!showFullText);
   };
 
-  const handleRequestDemo = () => {
-    const contactSection = document.getElementById("contact");
-    const headerOffset = 100;
+   const handleRequestDemo = () => {
+  const headerOffset = 80; // same offset you used in Header.js
 
-    if (contactSection) {
-      const elementPosition = contactSection.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerOffset;
+  const section = document.getElementById("contact");
+  if (section) {
+    const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
 
   const displayedText = shortTextOnHome ? (showFullText ? text : previewText) : text;
 

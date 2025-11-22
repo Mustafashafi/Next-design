@@ -8,9 +8,11 @@ export default function Footer() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const scrollWithOffset = (selector) => {
-    const headerOffset = 100; // your header height
-    const section = document.querySelector(selector);
+  // Scroll smoothly to a section with header offset
+  const scrollWithOffset = (targetId) => {
+    const headerOffset = 80; // Same offset as your header
+    const cleanId = targetId.replace("#", "");
+    const section = document.getElementById(cleanId);
 
     if (section) {
       const elementPosition = section.getBoundingClientRect().top + window.scrollY;
@@ -26,17 +28,17 @@ export default function Footer() {
   const handleScroll = (e, targetId) => {
     e.preventDefault();
 
-    // ========== If already on homepage =============
+    // If already on homepage
     if (pathname === "/") {
       scrollWithOffset(targetId);
       return;
     }
 
-    // ========== If coming from other pages ==========
+    // If coming from another page, navigate to home first
     const cleanId = targetId.replace("#", "");
     router.push(`/#${cleanId}`);
 
-    // Wait until the home page DOM is fully ready
+    // Wait until the DOM is fully loaded, then scroll
     const interval = setInterval(() => {
       if (document.readyState === "complete") {
         clearInterval(interval);
