@@ -494,7 +494,6 @@ header.scrolled {
   font-size: 1rem;
   line-height: 1.7;
   text-align: left;
-
   margin-top: 10px;
   animation: slideDown 0.35s ease forwards;
 }
