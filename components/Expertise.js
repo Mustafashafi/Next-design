@@ -5,7 +5,7 @@ export default function Expertise() {
 
   const titles = [
     "Epidemic and Pandemic Management",
-    "Holistic Health Management",
+    "Holistic  and Health Management",
     "Remote Patient Monitoring (RPM)",
     "Digitized, Accelerated Clinical Trials",
     "Wireless Medical Device Testing and Evaluation",
