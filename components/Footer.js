@@ -93,7 +93,7 @@ export default function Footer() {
         <div className="footer-section footer-contact">
           <h4>Contact</h4>
           <p><strong>Email:</strong> <a href="mailto:info@ai4lyf.com">info@ai4lyf.com</a></p>
-          <p><strong>Location:</strong> Lahore, Pakistan</p>
+          <p><strong>Location:</strong> USA</p>
         </div>
       </div>
 
