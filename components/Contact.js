@@ -23,7 +23,7 @@ export default function Contact() {
             </p>
             <p>
               <MapPin className="contact-icon" style={{marginRight:"10px"}}/>
-              <strong>Office:</strong> Lahore, Pakistan
+              <strong>Office:</strong> Oklahoma , USA
             </p>
           </div>
         </div>
