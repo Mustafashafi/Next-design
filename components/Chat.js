@@ -55,7 +55,7 @@ export default function Chat() {
     setInput('');
 
     try {
-      const res = await fetch('https://mustafan8n16.app.n8n.cloud/webhook/chat', {
+      const res = await fetch('https://mustafan8n17.app.n8n.cloud/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
